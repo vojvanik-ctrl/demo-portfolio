@@ -1,0 +1,1289 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tereza Malá | Portfolio</title>
+<meta name="description" content="Tereza Malá, studentka marketingové komunikace na FMK UTB ve Zlíně. Portfolio jako malá procházka večerním Zlínem: kampaně, social media, PR a copywriting.">
+<meta name="author" content="Tereza Malá">
+<meta name="theme-color" content="#081c30">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:site_name" content="Galerie studentských portfolií FMK">
+<meta property="og:title" content="Tereza Malá | Portfolio">
+<meta property="og:description" content="Malá procházka mým portfoliem. Kampaně, social media a copywriting studentky FMK UTB ve Zlíně.">
+<meta property="og:url" content="https://studentifmk.work/tereza-mala/">
+<meta property="og:image" content="https://studentifmk.work/tereza-mala/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='24' fill='%23081c30'/%3E%3Cpath d='M17 30c0-5-6-7-6-14a13 13 0 0 1 26 0c0 7-6 9-6 14Z' fill='%23ffd27a'/%3E%3Cpath d='M18 35h12M20 40h8' stroke='%23f4ebdd' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="alternate" type="application/json" href="portfolio.json" title="Údaje pro Galerii studentských portfolií FMK">
+<style>
+:root{
+  --night:#081c30; --blue:#101f3a; --paper:#f4ebdd; --paper-hi:#fbf6ec; --ink:#17202a; --ink-soft:#4b545d;
+  --brick:#a64230; --red:#c8102e; --red-deep:#8f0b21; --glow:#ffd27a; --green:#24483f;
+  --line:rgba(244,235,221,.26); --glass:rgba(8,28,48,.64);
+  --serif:Georgia, Cambria, "Times New Roman", serif;
+  --sans:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --sat:env(safe-area-inset-top,0px); --sar:env(safe-area-inset-right,0px);
+  --sab:env(safe-area-inset-bottom,0px); --sal:env(safe-area-inset-left,0px);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--night);color:var(--paper);font-family:var(--sans);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+[hidden]{display:none!important}
+
+.app{position:fixed;inset:0;overflow:hidden;outline:none;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+
+/* HUD */
+.hud{position:absolute;z-index:9;top:0;left:0;right:0;display:flex;align-items:center;gap:12px;
+  padding:calc(14px + var(--sat)) calc(16px + var(--sar)) 0 calc(18px + var(--sal));pointer-events:none}
+.hud>*{pointer-events:auto}
+.hud-left{display:flex;align-items:baseline;gap:16px;min-width:0}
+.mini-name{font:700 22px/1 var(--serif);letter-spacing:-.02em;color:var(--paper);white-space:nowrap;text-shadow:0 2px 12px rgba(8,28,48,.9);
+  opacity:0;transform:translateY(-4px);transition:opacity .4s ease,transform .4s ease;pointer-events:none}
+.mini-name::after{content:"";display:block;width:26px;height:3px;margin-top:5px;background:var(--red)}
+.app.played .mini-name{opacity:1;transform:none}
+.mini-sub{font:italic 400 16px/1.2 var(--serif);color:rgba(244,235,221,.84);white-space:nowrap;text-shadow:0 2px 12px rgba(8,28,48,.9);
+  opacity:0;transition:opacity .4s ease .1s;pointer-events:none}
+.app.played .mini-sub{opacity:1}
+.hud-right{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:8px;margin-left:auto}
+.chip{display:inline-flex;align-items:center;gap:12px;height:42px;padding:0 13px;border:1px solid var(--line);border-radius:11px;background:var(--glass);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font:600 14px/1 var(--sans);font-variant-numeric:tabular-nums;white-space:nowrap}
+.chip>span{display:inline-flex;align-items:center;gap:7px}
+.chip .num{display:inline}
+.chip svg{width:19px;height:19px;flex:none}
+.chip .ico-bulb{color:var(--glow)}
+.chip b{font-weight:700}
+.chip.bump .ico-bulb{animation:bump .32s ease}
+@keyframes bump{50%{transform:scale(1.3)}}
+.icon-btn,.outline-btn{height:42px;border:1px solid rgba(244,235,221,.5);border-radius:11px;background:var(--glass);color:var(--paper);cursor:pointer;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.icon-btn{width:42px;display:grid;place-items:center;padding:0}
+.icon-btn svg{width:20px;height:20px}
+.outline-btn{padding:0 15px;font:700 14px/1 var(--sans);white-space:nowrap}
+.icon-btn:hover,.outline-btn:hover{background:rgba(16,31,58,.9);border-color:var(--paper)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--glow);outline-offset:3px}
+.app:focus{outline:none}
+
+/* Intro (lives in the sky, fades after the first deliberate move) */
+.intro{position:absolute;z-index:3;left:calc(42px + var(--sal));top:calc(78px + var(--sat));max-width:min(640px,calc(100vw - 84px));
+  pointer-events:none;transition:opacity .4s ease,transform .4s ease;text-shadow:0 2px 18px rgba(8,28,48,.95),0 0 2px rgba(8,28,48,.6)}
+.intro.gone{opacity:0;transform:translateY(-8px)}
+.intro.removed{visibility:hidden}
+.eyebrow{margin:0 0 12px;font:700 13px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--glow)}
+.name{margin:0;font:700 clamp(58px,6.3vw,84px)/.96 var(--serif);letter-spacing:-.035em;color:var(--paper)}
+.rule{display:block;width:66px;height:5px;margin:16px 0 13px;background:var(--red)}
+.subtitle{margin:0;font:700 clamp(22px,2.2vw,30px)/1.15 var(--serif);color:var(--paper)}
+.intro-body{margin:12px 0 0;max-width:44ch;font:400 17px/1.5 var(--sans);color:rgba(244,235,221,.9)}
+.guide{display:inline-flex;flex-direction:column;gap:9px;margin-top:18px;padding:12px 16px 13px;border-radius:13px;background:var(--paper);color:var(--ink);text-shadow:none;box-shadow:0 12px 30px rgba(0,0,0,.32)}
+.guide p{margin:0}
+.guide-hint{font:700 15px/1.3 var(--sans)}
+.keys{display:flex;flex-wrap:wrap;gap:7px 18px;margin:0;padding:0;list-style:none;font:500 14px/1.6 var(--sans);color:var(--ink-soft)}
+.keys li{white-space:nowrap}
+kbd{display:inline-block;min-width:1.7em;padding:1px 6px;margin-right:2px;border:1px solid rgba(23,32,42,.34);border-bottom-width:3px;border-radius:5px;background:rgba(255,255,255,.55);
+  color:var(--ink);font:700 12.5px/1.45 var(--sans);text-align:center}
+.touch-guide{display:none;font:500 15px/1.45 var(--sans);color:var(--ink-soft);max-width:30ch}
+.is-touch .keys{display:none}
+.is-touch .touch-guide{display:block}
+
+/* Station prompt */
+.hint{position:absolute;z-index:6;left:50%;bottom:calc(26px + var(--sab));transform:translateX(-50%);display:flex;align-items:center;gap:11px;
+  min-height:48px;max-width:calc(100vw - 32px);padding:8px 18px 8px 10px;border:0;border-radius:13px;background:var(--paper);color:var(--ink);
+  font:700 15px/1.25 var(--sans);text-align:left;cursor:pointer;box-shadow:0 0 0 2px var(--red),0 0 22px rgba(255,210,122,.35),0 12px 28px rgba(0,0,0,.42);
+  animation:hint-in .2s ease}
+.hint kbd{background:var(--red);color:var(--paper);border-color:var(--red-deep);font-size:14px;padding:3px 9px}
+.hint .hint-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hint .hint-text small{display:block;font:600 11px/1.2 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.is-touch .hint{padding-left:18px;bottom:calc(16px + 60px + 16px + var(--sab))}
+.is-touch .hint kbd{display:none}
+@keyframes hint-in{from{opacity:0;transform:translate(-50%,6px)}}
+
+.toast{position:absolute;z-index:7;left:50%;top:calc(72px + var(--sat));max-width:calc(100vw - 32px);padding:10px 16px;border-radius:11px;background:var(--paper);color:var(--ink);
+  font:700 15px/1.35 var(--sans);text-align:center;box-shadow:0 0 0 2px var(--red),0 12px 26px rgba(0,0,0,.4);
+  opacity:0;transform:translate(-50%,-6px);transition:opacity .2s ease,transform .2s ease;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Touch controls */
+.touch{position:absolute;z-index:8;left:0;right:0;bottom:0;display:none;justify-content:space-between;align-items:flex-end;
+  padding:0 calc(16px + var(--sar)) calc(16px + var(--sab)) calc(16px + var(--sal));pointer-events:none}
+.is-touch .touch{display:flex}
+.pad{display:flex;gap:14px;pointer-events:auto}
+.tkey{width:60px;height:60px;padding:0;border-radius:50%;border:2px solid var(--paper);background:var(--paper);color:var(--ink);display:grid;place-items:center;cursor:pointer;
+  touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;box-shadow:0 6px 18px rgba(0,0,0,.4);transition:transform .08s ease,opacity .2s ease}
+.tkey svg{width:28px;height:28px;pointer-events:none}
+.tkey.primary{background:var(--red);border-color:var(--red);color:var(--paper)}
+.tkey.down{transform:scale(.92)}
+.tkey.dim{opacity:.42}
+
+/* Loader */
+.loader{position:absolute;inset:0;z-index:8;display:grid;place-items:center;padding:24px;background:radial-gradient(120% 80% at 50% 70%,#132a4a 0%,var(--night) 70%);transition:opacity .45s ease}
+.loader.done{opacity:0;pointer-events:none}
+.loader-box{width:min(340px,100%);text-align:center}
+.loader-name{margin:0 0 6px;font:700 34px/1 var(--serif);letter-spacing:-.03em}
+.loader p{margin:0;font:500 15px/1.5 var(--sans);color:rgba(244,235,221,.8)}
+.bar{height:4px;margin:18px auto 0;border-radius:4px;background:rgba(244,235,221,.15);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--glow);transition:width .2s ease}
+.loader .err{margin-top:16px;color:var(--paper)}
+.red-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border:0;border-radius:12px;background:var(--red);color:var(--paper);
+  font:700 15px/1 var(--sans);text-decoration:none;cursor:pointer}
+.red-btn:hover{background:#ad0e28}
+
+/* Dialog */
+dialog.panel{width:min(920px,calc(100vw - 32px));max-width:none;max-height:none;padding:0;border:0;border-radius:18px;background:var(--paper);color:var(--ink);
+  box-shadow:0 30px 90px rgba(0,0,0,.55);overflow:hidden;user-select:text;-webkit-user-select:text}
+dialog.panel::backdrop{background:rgba(5,17,29,.8);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.panel-scroll:focus{outline:none}
+.panel-scroll{max-height:min(88dvh,980px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.panel.anim .panel-scroll{animation:panel-in .21s cubic-bezier(.2,.7,.3,1)}
+@keyframes panel-in{from{opacity:0;transform:translateY(8px)}}
+.panel-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:8px;padding:12px 12px 8px 22px;background:linear-gradient(var(--paper) 78%,rgba(244,235,221,0))}
+.panel-bar .spacer{flex:1}
+.back-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px 0 8px;margin-left:-10px;border:0;border-radius:10px;background:transparent;color:var(--ink);font:700 15px/1 var(--sans);cursor:pointer}
+.back-btn svg{width:22px;height:22px}
+.back-btn:hover{background:rgba(23,32,42,.07)}
+.close-btn{width:44px;height:44px;padding:0;border:0;border-radius:50%;background:rgba(23,32,42,.07);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.close-btn:hover{background:rgba(200,16,46,.12);color:var(--red)}
+.close-btn svg{width:24px;height:24px}
+.panel :focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.panel-body{padding:0 clamp(18px,4vw,40px) clamp(24px,4vw,40px)}
+.panel-body>small,.eyebrow-ink{display:block;margin:0 0 4px;font:700 12px/1.3 var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--red)}
+.panel-body h2{margin:.12em 0 .55em;font:700 clamp(30px,4.4vw,46px)/1.05 var(--serif);letter-spacing:-.025em;color:var(--ink)}
+.panel-body p{margin:0 0 1em;max-width:70ch;font:16px/1.68 var(--sans)}
+.panel-body p b{color:var(--ink)}
+.kv{margin:22px 0;padding:6px 0 6px 20px;border-left:5px solid var(--red);font:700 clamp(21px,2.8vw,29px)/1.25 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+.kv i{font-style:normal;color:var(--red)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.tags span{display:inline-block;padding:6px 12px;border:1px solid rgba(23,32,42,.18);border-radius:999px;background:var(--paper-hi);font:700 13px/1.2 var(--sans)}
+.panel-body table{width:100%;max-width:720px;margin:4px 0 18px;border-collapse:collapse;font:15.5px/1.55 var(--sans)}
+.panel-body td{padding:10px 8px 10px 0;border-bottom:1px solid rgba(23,32,42,.12);vertical-align:top}
+.panel-body td:first-child{width:118px;font-weight:700;color:var(--red)}
+.about-head{display:flex;align-items:center;gap:18px;margin-bottom:6px}
+.about-head img{width:92px;height:92px;flex:none;border-radius:50%;object-fit:cover;object-position:50% 18%;background:#1b3254;border:3px solid var(--paper-hi);box-shadow:0 0 0 2px var(--red)}
+.about-head h2{margin:.1em 0 0}
+.cv-head,.profile-head{display:flex;align-items:center;gap:clamp(16px,3vw,26px);margin:6px 0 18px}
+.cv-head img,.profile-head img{flex:none;width:clamp(104px,18vw,148px);height:auto;aspect-ratio:4/5;max-width:100%;object-fit:cover;object-position:50% 20%;
+  border-radius:12px;background:#d8ccb8;box-shadow:0 0 0 3px var(--paper-hi),0 0 0 5px var(--red),0 10px 22px rgba(23,32,42,.18)}
+.cv-head>div,.profile-head>div{min-width:0}
+.cv-head h2,.profile-head h2{margin:.05em 0 .25em}
+.cv-head p,.profile-head p{margin:0}
+.profile-head p{color:var(--ink-soft);font:600 15px/1.4 var(--sans)}
+.score{padding:14px 16px;border-radius:12px;background:var(--paper-hi);border:1px solid rgba(23,32,42,.12)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 18px}
+.btn-off{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 18px;border:1.5px dashed rgba(23,32,42,.35);border-radius:12px;background:transparent;color:var(--ink-soft);font:700 15px/1 var(--sans);cursor:not-allowed}
+.note{font-size:14px!important;color:var(--ink-soft)}
+.note a{color:var(--ink)}
+
+/* Gallery inside a project */
+.gallery{margin:6px 0 4px}
+.g-stage{position:relative;border-radius:13px;overflow:hidden;background:#d8ccb8;aspect-ratio:836/470;box-shadow:0 10px 26px rgba(23,32,42,.18)}
+.g-main{display:block;width:100%;height:100%;object-fit:cover}
+.g-nav{position:absolute;top:50%;width:46px;height:46px;margin-top:-23px;padding:0;border:0;border-radius:50%;background:rgba(244,235,221,.94);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.28)}
+.g-nav:hover{background:var(--paper-hi);color:var(--red)}
+.g-nav svg{width:24px;height:24px}
+.g-prev{left:12px}.g-next{right:12px}
+.g-meta{display:flex;gap:12px;align-items:baseline;margin:10px 0;font:14px/1.4 var(--sans);color:var(--ink-soft)}
+.g-count{flex:none;font-weight:700;color:var(--red);font-variant-numeric:tabular-nums}
+.g-thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:6px}
+.g-thumb{padding:0;border:2px solid transparent;border-radius:9px;overflow:hidden;background:#d8ccb8;cursor:pointer;aspect-ratio:16/9;opacity:.72}
+.g-thumb:hover{opacity:1}
+.g-thumb[aria-current="true"]{border-color:var(--red);opacity:1}
+.g-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* No-game overview */
+.entry-list{display:grid;grid-template-columns:1fr;gap:9px;margin:18px 0 20px;padding:0;list-style:none}
+.entry{display:grid;grid-template-columns:auto 76px minmax(0,1fr) auto;align-items:center;gap:14px;width:100%;min-height:64px;padding:8px 14px 8px 12px;
+  border:1px solid rgba(23,32,42,.14);border-radius:13px;background:var(--paper-hi);color:var(--ink);text-align:left;cursor:pointer}
+.entry:hover{border-color:var(--red);box-shadow:0 6px 16px rgba(23,32,42,.1)}
+.e-num{width:24px;font:700 13px/1 var(--sans);color:var(--red);font-variant-numeric:tabular-nums}
+.entry img{width:76px;height:48px;border-radius:8px;object-fit:cover;background:#1b3254}
+.entry img.round{width:48px;height:48px;margin-left:14px;border-radius:50%;object-position:50% 18%}
+.e-text{min-width:0}
+.e-text small{display:block;font:600 11.5px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.e-text b{display:block;font:700 18px/1.25 var(--serif);overflow-wrap:anywhere}
+.seen{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--red);color:var(--paper)}
+.seen svg{width:15px;height:15px}
+.seen.no{background:transparent}
+@media (min-width:760px){.entry-list{grid-template-columns:1fr 1fr}.entry-list li:first-child,.entry-list li:last-child{grid-column:1/-1}}
+
+/* Phone portrait */
+@media (max-width:600px){
+  .hud{gap:8px;padding:calc(12px + var(--sat)) calc(12px + var(--sar)) 0 calc(14px + var(--sal))}
+  .hud-left{flex-direction:column;align-items:flex-start;gap:2px}
+  .mini-sub{display:none;font-size:13.5px}
+  .app.played .mini-sub{display:block}
+  .hud{align-items:flex-start}
+  .hud-right .chip{order:2}.hud-right button{order:1}
+  .mini-name{display:none;font-size:19px;padding-top:11px}
+  .app.played .mini-name{display:block}
+  .toast{top:calc(118px + var(--sat))}
+  .chip{gap:9px;height:44px;padding:0 10px;font-size:13.5px}
+  .chip svg{width:17px;height:17px}
+  .icon-btn{width:44px;height:44px}
+  .outline-btn{height:44px;padding:0 12px;font-size:13.5px}
+  .intro{left:calc(18px + var(--sal));right:calc(18px + var(--sar));top:calc(72px + var(--sat));max-width:none}
+  .eyebrow{font-size:11.5px;margin-bottom:9px}
+  .name{font-size:clamp(38px,11vw,44px)}
+  .rule{width:52px;height:4px;margin:11px 0 10px}
+  .subtitle{font-size:clamp(17px,5vw,20px)}
+  .intro-body{font-size:15px;margin-top:9px}
+  .guide{margin-top:13px;padding:11px 14px}
+  .guide-hint{font-size:15px}
+  dialog.panel{width:100vw;margin:auto 0 0;border-radius:18px 18px 0 0}
+  .panel-scroll{max-height:92dvh;padding-bottom:var(--sab)}
+  .panel-body{padding:0 18px 26px}
+  .panel-body td:first-child{width:92px}
+  .g-nav{width:44px;height:44px;margin-top:-22px}
+  .g-prev{left:8px}.g-next{right:8px}
+  .g-meta{flex-direction:column;gap:2px}
+  .entry{grid-template-columns:auto 64px minmax(0,1fr) auto;gap:11px;padding:8px 12px 8px 10px}
+  .entry img{width:64px;height:42px}
+  .entry img.round{width:42px;height:42px;margin-left:11px}
+  .e-text b{font-size:16.5px}
+}
+@media (max-height:820px) and (min-width:601px){
+  .intro{top:calc(68px + var(--sat))}
+  .intro-body{display:none}
+}
+@media (max-height:700px) and (max-width:600px){
+  .intro-body{display:none}
+  .touch-guide{max-width:none}
+}
+/* Short landscape (phones on their side) */
+@media (max-height:520px) and (orientation:landscape){
+  .intro{top:calc(62px + var(--sat))}
+  .eyebrow,.intro-body{display:none}
+  .name{font-size:38px}
+  .rule{margin:9px 0 8px}
+  .subtitle{font-size:18px}
+  .guide{margin-top:10px;padding:8px 12px}
+  .is-touch .hint{top:calc(66px + var(--sat));bottom:auto}
+  .toast{top:calc(120px + var(--sat))}
+  .panel-scroll{max-height:94dvh}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<main id="app" class="app" tabindex="-1" aria-describedby="sr-desc">
+  <h1 class="sr-only">Tereza Malá: Malá procházka mým portfoliem</h1>
+  <p class="sr-only" id="sr-desc">Interaktivní portfolio ve formě jednoduché hry ve večerním Zlíně. Celý obsah, tedy O mně, šest projektů a CV, je dostupný i přes tlačítko Bez hry.</p>
+  <canvas id="scene" role="img" aria-label="Večerní Zlín jako architektonický model. Tereza běží po chodníku kolem billboardů s projekty, po silnici jezdí auta."></canvas>
+
+  <header class="hud">
+    <div class="hud-left">
+      <span class="mini-name" aria-hidden="true">Tereza Malá</span>
+      <span class="mini-sub" aria-hidden="true">Procházka mým portfoliem</span>
+    </div>
+    <div class="hud-right">
+      <div class="chip" id="score-chip">
+        <span><svg class="ico-bulb" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 30c0-5-6-7-6-14a13 13 0 0 1 26 0c0 7-6 9-6 14Z"/><path d="M18 35h12M20 40h8"/></svg><span class="sr-only">Insighty</span><span class="num"><b id="ins-count">0</b>/<span id="ins-total">24</span></span></span>
+        <span><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15h14l4 4h18v21H6zM6 15V9h13l4 6"/></svg><span class="sr-only">Projekty</span><span class="num"><b id="prj-count">0</b>/6</span></span>
+      </div>
+      <button class="icon-btn" id="ambient-btn" type="button" aria-pressed="false" aria-label="Pozastavit pohyb" title="Pozastavit pohyb">
+        <svg class="i-pause" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M18 13v22M30 13v22"/></svg>
+        <svg class="i-play" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true" hidden><path d="M17 11.5v25l20-12.5z"/></svg>
+      </button>
+      <button class="outline-btn" id="skip-btn" type="button" aria-haspopup="dialog">Bez hry</button>
+    </div>
+  </header>
+
+  <section class="intro" id="intro" aria-hidden="true">
+    <p class="eyebrow">Portfolio · FMK UTB ve Zlíně</p>
+    <p class="name">Tereza Malá</p>
+    <span class="rule"></span>
+    <p class="subtitle">Malá procházka mým portfoliem</p>
+    <p class="intro-body">Jsem studentka marketingové komunikace. Projděte si moje nápady, kampaně a projekty.</p>
+    <div class="guide">
+      <p class="guide-hint">Rozběhněte se a prohlédněte si moje práce.</p>
+      <ul class="keys">
+        <li><kbd>←</kbd><kbd>→</kbd> / <kbd>A</kbd><kbd>D</kbd> pohyb</li>
+        <li><kbd>Mezerník</kbd> / <kbd>↑</kbd> skok</li>
+        <li><kbd>E</kbd> / <kbd>Enter</kbd> otevřít projekt</li>
+      </ul>
+      <p class="touch-guide">Šipkami se pohybujete, tlačítkem ↑ skáčete. U billboardu otevřete projekt.</p>
+    </div>
+  </section>
+
+  <button class="hint" id="hint" type="button" hidden><kbd>E</kbd><span class="hint-text" id="hint-text"></span></button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="touch" id="touch" aria-hidden="true">
+    <div class="pad">
+      <button class="tkey" type="button" data-k="L" tabindex="-1"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M28 12 16 24l12 12M16 24h20"/></svg></button>
+      <button class="tkey" type="button" data-k="R" tabindex="-1"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 12 12 12-12 12M32 24H12"/></svg></button>
+    </div>
+    <div class="pad">
+      <button class="tkey primary" type="button" data-k="J" tabindex="-1"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="m12 24 12-12 12 12M24 12v26"/></svg></button>
+      <button class="tkey dim" type="button" data-k="E" tabindex="-1"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="9" width="28" height="30" rx="4"/><path d="M17 18h14M17 25h14M17 32h8"/></svg></button>
+    </div>
+  </div>
+
+  <div class="loader" id="loader">
+    <div class="loader-box">
+      <p class="loader-name">Tereza Malá</p>
+      <p id="loader-text">Rozsvěcuji večerní Zlín…</p>
+      <div class="bar" aria-hidden="true"><i id="loader-bar"></i></div>
+      <div class="err" id="loader-err" hidden>
+        <p>Některé obrázky města se nepodařilo načíst. Celé portfolio si ale můžete projít i bez hry.</p>
+        <p style="margin-top:14px"><button class="red-btn" type="button" id="err-skip">Otevřít portfolio bez hry</button></p>
+      </div>
+    </div>
+  </div>
+  <div id="safe-probe" aria-hidden="true" style="position:absolute;visibility:hidden;pointer-events:none;padding-bottom:env(safe-area-inset-bottom,0px)"></div>
+  <noscript><div class="loader"><div class="loader-box"><p class="loader-name">Tereza Malá</p><p>Portfolio potřebuje zapnutý JavaScript.</p></div></div></noscript>
+</main>
+
+<dialog class="panel" id="dlg" aria-labelledby="dlg-title">
+  <div class="panel-scroll" id="dlg-scroll" tabindex="-1">
+    <div class="panel-bar">
+      <button class="back-btn" id="dlg-back" type="button" hidden><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M28 12 16 24l12 12"/></svg>Přehled</button>
+      <span class="spacer"></span>
+      <button class="close-btn" id="dlg-close" type="button" aria-label="Zavřít"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" aria-hidden="true"><path d="m15 15 18 18M33 15 15 33"/></svg></button>
+    </div>
+    <div class="panel-body" id="dlg-body"></div>
+  </div>
+</dialog>
+
+<script>
+(() => {
+'use strict';
+
+/* ------------------------------------------------------------------
+   NASTAVENÍ – tady doplňte skutečné údaje před zveřejněním.
+   contactEmail: např. 'tereza.mala@email.cz'  (null = tlačítko „Kontakt bude doplněn“)
+   cvPdf:        např. 'cv/tereza-mala-cv.pdf' (null = tlačítko „CV bude doplněno“)
+   galleryUrl:   adresa společné galerie studentských portfolií
+------------------------------------------------------------------- */
+const CONFIG = {
+  contactEmail: null,
+  cvPdf: null,
+  galleryUrl: 'https://studentifmk.work/'
+};
+
+const T = {"locale":"cs-CZ","person":"Tereza Malá","subtitle":"Malá procházka mým portfoliem","documentTitle":"Tereza Malá | Portfolio","introEyebrow":"Portfolio · FMK UTB ve Zlíně","introBody":"Jsem studentka marketingové komunikace. Projděte si moje nápady, kampaně a projekty.","introHint":"Rozběhněte se a prohlédněte si moje práce.","desktopControls":[{"key":"← → / A D","label":"pohyb"},{"key":"Mezerník / ↑","label":"skok"},{"key":"E / Enter","label":"otevřít projekt"}],"touchHint":"Šipkami se pohybujete, tlačítkem ↑ skáčete. U billboardu otevřete projekt.","skip":"Bez hry","pause":"Pozastavit pohyb","resume":"Obnovit pohyb","insights":"Insighty","projects":"Projekty","openProject":"Otevřít projekt","close":"Zavřít","about":"O mně","cv":"CV a kontakt","introDismiss":"first-intentional-move-or-jump","introFadeMs":400,"fictionalDemo":true,"contactEmail":null,"cvPdf":null,"contactPlaceholder":"Kontakt bude doplněn","cvPlaceholder":"CV bude doplněno"};
+const CONTENT = {"brief":{"t":"Brief","h":"<small>Brief · O mně<\/small><h2>Klient: moje budoucnost<\/h2><table>\n<tr><td>Kdo<\/td><td>Tereza Malá, 2. ročník Bc. programu Marketingová komunikace, FMK UTB ve Zlíně<\/td><\/tr>\n<tr><td>Cíl<\/td><td>Juniorní pozice copywriterky / social media v kreativní agentuře<\/td><\/tr>\n<tr><td>Insight<\/td><td>Personalisté nečtou portfolia. Projdou je za 30 sekund. Tak ať je těch 30 sekund zábava.<\/td><\/tr>\n<tr><td>Studuji<\/td><td>Reklama, PR, Média v marketingových komunikacích, Psychologie médií, Direct marketing, Podpora prodeje<\/td><\/tr>\n<tr><td>Fakulta<\/td><td>Na FMK se potkává marketing s designem, animací a audiovizí, takže umím mluvit s ateliéry.<\/td><\/tr><\/table>"},"p1":{"t":"Zlín jinak","h":"<small>Kampaň · Outdoor<\/small><h2>Zlín jinak<\/h2><div class=\"kv\">Zlín? Ten od <i>bot<\/i>?<br>Pojď zjistit, co tu dneska šijem.<\/div>\n<p><b>Výzva:<\/b> Mladí lidé znají Zlín z učebnice dějepisu, ne jako město pro studium.<br><b>Nápad:<\/b> Využít baťovské klišé a otočit ho: z „boty“ udělat „kroky“. Série plakátů s otisky bot vedoucími k ateliérům, klubům a kavárnám.<br><b>Moje role:<\/b> koncept, claimy, copy pro outdoor a sociální sítě.<\/p><div class=\"tags\"><span>Copywriting<\/span><span>Key visual<\/span><span>OOH<\/span><\/div>"},"p2":{"t":"#ZákulisíFMK","h":"<small>Social media · TikTok<\/small><h2>#ZákulisíFMK<\/h2><div class=\"kv\">Den otevřených dveří<br><i>trvá jeden den.<\/i> Zákulisí 365.<\/div>\n<p><b>Výzva:<\/b> Uchazeči vidí fakultu jednou za rok.<br><b>Nápad:<\/b> Formát krátkých videí „Co je v ateliéru?“, kde studenti ukazují rozdělanou práci, ne vyleštěné výsledky.<br><b>Moje role:<\/b> obsahová strategie, scénáře, plán publikace.<\/p><div class=\"tags\"><span>TikTok<\/span><span>Content plan<\/span><span>Scénáře<\/span><\/div>"},"p3":{"t":"Krize za 24 h","h":"<small>PR · Krizová komunikace<\/small><h2>Krize za 24 hodin<\/h2><div class=\"kv\">Nejhorší tisková zpráva<br>je ta, <i>kterou nenapíšeš.<\/i><\/div>\n<p><b>Zadání:<\/b> Simulace krize fiktivní značky potravin v rámci předmětu Public Relations.<br><b>Výstupy:<\/b> tisková zpráva, Q&A pro mluvčího, scénář reakcí na sociálních sítích po hodinách.<br><b>Co jsem se naučila:<\/b> rychlost je důležitější než dokonalost. A omluva se nepíše pasivem.<\/p><div class=\"tags\"><span>PR<\/span><span>Tisková zpráva<\/span><span>Týmová práce<\/span><\/div>"},"p4":{"t":"Festival","h":"<small>Event marketing<\/small><h2>Studentský festival<\/h2><div class=\"kv\">Vstupenka platí<br><i>i pro tvoji mámu.<\/i><\/div>\n<p><b>Výzva:<\/b> Prodat festival mimo studentskou bublinu.<br><b>Nápad:<\/b> Kampaň s dvojitou vstupenkou „vezmi někoho, kdo by sem nikdy nešel“.<br><b>Moje role:<\/b> komunikační plán, Instagram, partneři, podpora prodeje.<\/p><div class=\"tags\"><span>Event<\/span><span>Instagram<\/span><span>Partnerství<\/span><\/div>"},"p5":{"t":"Newsletter","h":"<small>Direct marketing<\/small><h2>Od lajku k dárci<\/h2><div class=\"kv\">Neposílej newsletter.<br><i>Pošli dopis.<\/i><\/div>\n<p><b>Výzva:<\/b> Neziskovka má sledující, ale málo pravidelných dárců.<br><b>Nápad:<\/b> E-mailová série 5 osobních dopisů od jednoho příběhu, ne od organizace.<br><b>Moje role:<\/b> struktura série, copy, předměty e-mailů a A/B varianty.<\/p><div class=\"tags\"><span>E-mailing<\/span><span>Storytelling<\/span><span>Non-profit<\/span><\/div>"},"p6":{"t":"Rebrand kavárny","h":"<small>Interdisciplinární tým<\/small><h2>Rebrand lokální kavárny<\/h2><div class=\"kv\">Káva, co si <i>pamatuje<\/i><br>tvoje jméno.<\/div>\n<p><b>Tým:<\/b> já (strategie + copy), studentka Designu (identita), student Multimédií (spot).<br><b>Výstup:<\/b> positioning, tone of voice, menu texty, 15s spot.<br><b>Proč to je důležité:<\/b> FMK je o tom, že kreativci z různých oborů dělají spolu.<\/p><div class=\"tags\"><span>Brand<\/span><span>Tone of voice<\/span><span>Spolupráce<\/span><\/div>"},"cv":{"t":"Agentura · CV","h":"<small>Pitch · CV<\/small><h2>Tereza Malá<\/h2><p><b>Junior copywriter / social media<\/b> · Zlín<\/p><table>\n<tr><td>Vzdělání<\/td><td>Fakulta multimediálních komunikací UTB ve Zlíně, Bc. Marketingová komunikace (studuji)<\/td><\/tr>\n<tr><td>Praxe<\/td><td>Social media pro studentské akce · copywriting na volné noze<\/td><\/tr>\n<tr><td>Umím<\/td><td>Copywriting, claimy, content plán, PR texty, Canva, Figma (základy), Meta Business Suite<\/td><\/tr>\n<tr><td>Jazyky<\/td><td>Čeština (rodilý), angličtina (B2)<\/td><\/tr>\n<tr><td>Hledám<\/td><td>Stáž nebo juniorní pozici v kreativní agentuře<\/td><\/tr><\/table>\n<p id=\"score\"><\/p><a class=\"btn\" href=\"#\" onclick=\"alert('Sem vlož odkaz na PDF s CV.');return false\">⬇ Stáhnout CV (PDF)<\/a><a class=\"btn\" href=\"mailto:tereza.mala@example.cz\">✉ Napsat mi<\/a>\n<p class=\"keys\">Fiktivní studentské portfolio vytvořené jako ukázka.<\/p>"}};
+const ANIM = {"coordinateSystem":{"frameWidth":512,"frameHeight":640,"anchor":[0.5,0.9375],"displayHeight":160},"states":{"idle":{"frames":["idle_01"],"fps":1,"loop":true,"blinkFrame":"idle_blink","blinkEveryMs":[2800,5200],"blinkDurationMs":110},"run":{"frames":["run_01","run_02","run_03","run_04","run_05","run_06","run_07","run_08"],"fps":12,"loop":true,"speedReference":380},"takeoff":{"frames":["jump_prepare"],"durationMs":35,"blockPhysics":false},"ascend":{"frames":["jump_ascend"],"while":"vy < -85"},"apex":{"frames":["jump_apex"],"while":"abs(vy) <= 85"},"descend":{"frames":["jump_descend"],"while":"vy > 85"},"land":{"frames":["land"],"durationMs":90},"interact":{"frames":["interact"],"durationMs":240}},"physics":{"speed":380,"jumpVelocity":-640,"gravity":1600,"coyoteMs":80,"jumpBufferMs":100,"maxDt":0.033},"effects":{"bulbBobPx":5,"bulbPeriodMs":1800,"pickupMs":180,"landingDustMs":180,"introFadeMs":400,"dialogFadeMs":210},"traffic":{"speedPxPerSecond":[190,460],"spawnSeconds":[1.2,2.8],"maxDesktop":7,"maxMobile":4,"lanes":2,"collisionWithPlayer":false},"reducedMotion":["disable-bob","disable-shake","disable-decorative-pulses","disable-ambient-traffic-or-offer-pause"]};
+const LAYOUT = {"worldWidth":5600,"playerStartX":150,"cameraPlayerFraction":0.35,"stations":[{"id":"brief","x":350,"type":"about","asset":"brief_kiosk"},{"id":"p1","x":1100,"type":"project","asset":"billboard_empty","activeAsset":"billboard_active","keyVisual":"p1_billboard_kv","title":"Zlín jinak"},{"id":"p2","x":1800,"type":"project","asset":"billboard_empty","activeAsset":"billboard_active","keyVisual":"p2_billboard_kv","title":"#ZákulisíFMK"},{"id":"p3","x":2500,"type":"project","asset":"billboard_empty","activeAsset":"billboard_active","keyVisual":"p3_billboard_kv","title":"Krize za 24 hodin"},{"id":"p4","x":3200,"type":"project","asset":"billboard_empty","activeAsset":"billboard_active","keyVisual":"p4_billboard_kv","title":"Studentský festival"},{"id":"p5","x":3900,"type":"project","asset":"billboard_empty","activeAsset":"billboard_active","keyVisual":"p5_billboard_kv","title":"Od lajku k dárci"},{"id":"p6","x":4600,"type":"project","asset":"billboard_empty","activeAsset":"billboard_active","keyVisual":"p6_billboard_kv","title":"Rebrand lokální kavárny"},{"id":"cv","x":5300,"type":"cv","asset":"agency_building"}],"bulbs":[{"id":0,"x":448,"height":73.5},{"id":1,"x":504,"height":125.6},{"id":2,"x":560,"height":143.0},{"id":3,"x":616,"height":125.6},{"id":4,"x":672,"height":73.5},{"id":5,"x":840,"height":150},{"id":6,"x":1080,"height":60},{"id":7,"x":1200,"height":150},{"id":8,"x":1338,"height":73.5},{"id":9,"x":1394,"height":125.6},{"id":10,"x":1450,"height":143.0},{"id":11,"x":1506,"height":125.6},{"id":12,"x":1562,"height":73.5},{"id":13,"x":1680,"height":150},{"id":14,"x":1800,"height":60},{"id":15,"x":2040,"height":150},{"id":16,"x":2280,"height":60},{"id":17,"x":2400,"height":150},{"id":18,"x":2640,"height":60},{"id":19,"x":2738,"height":73.5},{"id":20,"x":2794,"height":125.6},{"id":21,"x":2850,"height":143.0},{"id":22,"x":2906,"height":125.6},{"id":23,"x":2962,"height":73.5},{"id":24,"x":3240,"height":150},{"id":25,"x":3480,"height":60},{"id":26,"x":3600,"height":150},{"id":27,"x":3840,"height":60},{"id":28,"x":4138,"height":73.5},{"id":29,"x":4194,"height":125.6},{"id":30,"x":4250,"height":143.0},{"id":31,"x":4306,"height":125.6},{"id":32,"x":4362,"height":73.5},{"id":33,"x":4440,"height":150},{"id":34,"x":4680,"height":60},{"id":35,"x":4800,"height":150},{"id":36,"x":5040,"height":60},{"id":37,"x":5280,"height":150}],"obstacles":[{"id":0,"x":560,"asset":"obstacle_no_brief","message":"Nejdřív potřebujeme brief. −1 insight"},{"id":1,"x":820,"asset":"obstacle_printer","message":"Tiskárna má vlastní názor. −1 insight"},{"id":2,"x":1450,"asset":"obstacle_revisions","message":"Ještě jednu drobnou změnu. −1 insight"},{"id":3,"x":2150,"asset":"obstacle_feedback","message":"Připomínka k připomínce. −1 insight"},{"id":4,"x":2850,"asset":"obstacle_cables","message":"Někde se to zaseklo. −1 insight"},{"id":5,"x":3550,"asset":"obstacle_archive","message":"Která verze je ta finální? −1 insight"},{"id":6,"x":4250,"asset":"obstacle_paperball","message":"Zkusíme jiný směr. −1 insight"},{"id":7,"x":4910,"asset":"obstacle_deadline","message":"Tohle mělo být včera. −1 insight"}],"decorations":[{"x":80,"asset":"tree_round","layer":"near"},{"x":470,"asset":"street_lamp","layer":"near"},{"x":690,"asset":"park_bench","layer":"near"},{"x":1335,"asset":"tree_tall","layer":"near"},{"x":1340,"asset":"street_bin","layer":"near"},{"x":1540,"asset":"street_lamp","layer":"near"},{"x":2085,"asset":"bus_shelter","layer":"near"},{"x":2290,"asset":"planter","layer":"near"},{"x":2700,"asset":"street_lamp","layer":"near"},{"x":2775,"asset":"street_bin","layer":"near"},{"x":2910,"asset":"tree_round","layer":"near"},{"x":3400,"asset":"brick_wall","layer":"near"},{"x":3650,"asset":"street_lamp","layer":"near"},{"x":4090,"asset":"park_bench","layer":"near"},{"x":4345,"asset":"tree_tall","layer":"near"},{"x":4840,"asset":"street_lamp","layer":"near"},{"x":5545,"asset":"tree_round","layer":"near"}],"trafficPool":["car_vintage_red","car_vintage_blue","car_vintage_cream","taxi_vintage","bus_vintage_red","van_fmk_vintage","pickup_florist","wagon_artwork","car_modern_silver","wagon_modern_green","taxi_modern","trolleybus_red","van_kafe21","van_tlapka","minibus_festival","van_printshop"],"stationRange":140,"visitedProjectsCount":6,"totalBulbs":38,"note":"Decorations may be shifted slightly to avoid obscuring billboard inserts; do not move project ordering."};
+const PACK = {"assets":{"car_vintage_red":{"src":"assets/img/vehicles/car_vintage_red.webp","w":386,"h":199,"anchor":[0.5,1.0],"displayWidth":108,"facing":"right","era":"vintage","realH":126.3},"car_vintage_blue":{"src":"assets/img/vehicles/car_vintage_blue.webp","w":424,"h":204,"anchor":[0.5,1.0],"displayWidth":128,"facing":"right","era":"vintage","realH":124.9},"car_vintage_cream":{"src":"assets/img/vehicles/car_vintage_cream.webp","w":380,"h":199,"anchor":[0.5,1.0],"displayWidth":110,"facing":"right","era":"vintage","realH":127.6},"taxi_vintage":{"src":"assets/img/vehicles/taxi_vintage.webp","w":402,"h":212,"anchor":[0.5,1.0],"displayWidth":122,"facing":"right","era":"vintage","realH":133.4},"bus_vintage_red":{"src":"assets/img/vehicles/bus_vintage_red.webp","w":541,"h":208,"anchor":[0.5,1.0],"displayWidth":220,"facing":"right","era":"vintage","realH":236.7},"van_fmk_vintage":{"src":"assets/img/vehicles/van_fmk_vintage.webp","w":378,"h":202,"anchor":[0.5,1.0],"displayWidth":138,"facing":"right","decal":{"text":"FMK UTB","center":[0.36,0.43],"maxWidth":0.39,"color":"#C8102E"},"era":"vintage","realH":157.8},"pickup_florist":{"src":"assets/img/vehicles/pickup_florist.webp","w":396,"h":216,"anchor":[0.5,1.0],"displayWidth":140,"facing":"right","era":"vintage","realH":152.4},"wagon_artwork":{"src":"assets/img/vehicles/wagon_artwork.webp","w":417,"h":232,"anchor":[0.5,1.0],"displayWidth":145,"facing":"right","era":"vintage","realH":127.6},"car_modern_silver":{"src":"assets/img/vehicles/car_modern_silver.webp","w":365,"h":172,"anchor":[0.5,1.0],"displayWidth":112,"facing":"right","era":"contemporary","realH":127.4},"wagon_modern_green":{"src":"assets/img/vehicles/wagon_modern_green.webp","w":412,"h":167,"anchor":[0.5,1.0],"displayWidth":132,"facing":"right","era":"contemporary","realH":119.6},"taxi_modern":{"src":"assets/img/vehicles/taxi_modern.webp","w":390,"h":174,"anchor":[0.5,1.0],"displayWidth":122,"facing":"right","era":"contemporary","realH":134.2},"trolleybus_red":{"src":"assets/img/vehicles/trolleybus_red.webp","w":445,"h":309,"anchor":[0.5,1.0],"displayWidth":230,"facing":"right","era":"contemporary","realH":410.9},"van_kafe21":{"src":"assets/img/vehicles/van_kafe21.webp","w":387,"h":195,"anchor":[0.5,1.0],"displayWidth":143,"facing":"right","decal":{"text":"Kafe 21","center":[0.34,0.42],"maxWidth":0.38,"color":"#C8102E"},"era":"contemporary","realH":183.4},"van_tlapka":{"src":"assets/img/vehicles/van_tlapka.webp","w":423,"h":220,"anchor":[0.5,1.0],"displayWidth":150,"facing":"right","decal":{"text":"Tlapka Zlín","center":[0.32,0.43],"maxWidth":0.38,"color":"#24483F"},"era":"contemporary","realH":181.5},"minibus_festival":{"src":"assets/img/vehicles/minibus_festival.webp","w":413,"h":258,"anchor":[0.5,1.0],"displayWidth":165,"facing":"right","era":"contemporary","realH":207.3},"van_printshop":{"src":"assets/img/vehicles/van_printshop.webp","w":437,"h":213,"anchor":[0.5,1.0],"displayWidth":160,"facing":"left","decal":{"text":"Tiskárna","center":[0.61,0.43],"maxWidth":0.38,"color":"#C8102E"},"era":"contemporary","realH":181.5},"obstacle_printer":{"src":"assets/img/obstacles/obstacle_printer.webp","w":279,"h":240,"anchor":[0.5,1.0],"displayHeight":66,"collisionHeight":54.12,"message":"Tiskárna má vlastní názor. −1 insight"},"obstacle_revisions":{"src":"assets/img/obstacles/obstacle_revisions.webp","w":261,"h":240,"anchor":[0.5,1.0],"displayHeight":74,"collisionHeight":60.68,"message":"Ještě jednu drobnou změnu. −1 insight"},"obstacle_feedback":{"src":"assets/img/obstacles/obstacle_feedback.webp","w":256,"h":240,"anchor":[0.5,1.0],"displayHeight":72,"collisionHeight":59.04,"message":"Připomínka k připomínce. −1 insight"},"obstacle_cables":{"src":"assets/img/obstacles/obstacle_cables.webp","w":265,"h":240,"anchor":[0.5,1.0],"displayHeight":50,"collisionHeight":41.0,"message":"Někde se to zaseklo. −1 insight"},"obstacle_archive":{"src":"assets/img/obstacles/obstacle_archive.webp","w":259,"h":240,"anchor":[0.5,1.0],"displayHeight":88,"collisionHeight":72.16,"message":"Která verze je ta finální? −1 insight"},"obstacle_paperball":{"src":"assets/img/obstacles/obstacle_paperball.webp","w":261,"h":240,"anchor":[0.5,1.0],"displayHeight":60,"collisionHeight":49.199999999999996,"message":"Zkusíme jiný směr. −1 insight"},"obstacle_deadline":{"src":"assets/img/obstacles/obstacle_deadline.webp","w":296,"h":240,"anchor":[0.5,1.0],"displayHeight":70,"collisionHeight":57.4,"message":"Tohle mělo být včera. −1 insight"},"obstacle_no_brief":{"src":"assets/img/obstacles/obstacle_no_brief.webp","w":227,"h":240,"anchor":[0.5,1.0],"displayHeight":68,"collisionHeight":55.76,"message":"Nejdřív potřebujeme brief. −1 insight"},"billboard_empty":{"src":"assets/img/props/billboard_empty.webp","w":375,"h":296,"anchor":[0.5,1.0],"displayHeight":300,"insertRect":[0.093,0.199,0.822,0.53]},"billboard_active":{"src":"assets/img/props/billboard_active.webp","w":374,"h":296,"anchor":[0.5,1.0],"displayHeight":300,"insertRect":[0.093,0.199,0.822,0.53]},"brief_kiosk":{"src":"assets/img/props/brief_kiosk.webp","w":149,"h":309,"anchor":[0.5,1.0],"displayHeight":232,"portraitRect":[0.238,0.307,0.509,0.46],"labelRect":[0.238,0.155,0.517,0.085]},"agency_building":{"src":"assets/img/props/agency_building.webp","w":401,"h":332,"anchor":[0.5,1.0],"displayHeight":450,"labelRect":[0.165,0.47,0.43,0.084]},"street_lamp":{"src":"assets/img/props/street_lamp.webp","w":84,"h":296,"anchor":[0.5,1.0],"displayHeight":320},"park_bench":{"src":"assets/img/props/park_bench.webp","w":310,"h":169,"anchor":[0.5,1.0],"displayHeight":66},"bus_shelter":{"src":"assets/img/props/bus_shelter.webp","w":366,"h":214,"anchor":[0.5,1.0],"displayHeight":195},"planter":{"src":"assets/img/props/planter.webp","w":326,"h":129,"anchor":[0.5,1.0],"displayHeight":62},"tree_round":{"src":"assets/img/props/tree_round.webp","w":319,"h":342,"anchor":[0.5,1.0],"displayHeight":400},"tree_tall":{"src":"assets/img/props/tree_tall.webp","w":215,"h":349,"anchor":[0.5,1.0],"displayHeight":380},"brick_wall":{"src":"assets/img/props/brick_wall.webp","w":329,"h":226,"anchor":[0.5,1.0],"displayHeight":112},"street_bin":{"src":"assets/img/props/street_bin.webp","w":125,"h":229,"anchor":[0.5,1.0],"displayHeight":66},"run_01":{"src":"assets/img/character/run_01.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"run_02":{"src":"assets/img/character/run_02.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"run_03":{"src":"assets/img/character/run_03.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"run_04":{"src":"assets/img/character/run_04.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"run_05":{"src":"assets/img/character/run_05.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"run_06":{"src":"assets/img/character/run_06.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"run_07":{"src":"assets/img/character/run_07.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"run_08":{"src":"assets/img/character/run_08.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"idle_01":{"src":"assets/img/character/idle_01.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"idle_blink":{"src":"assets/img/character/idle_blink.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"jump_prepare":{"src":"assets/img/character/jump_prepare.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"jump_ascend":{"src":"assets/img/character/jump_ascend.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"jump_apex":{"src":"assets/img/character/jump_apex.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"jump_descend":{"src":"assets/img/character/jump_descend.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"land":{"src":"assets/img/character/land.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"interact":{"src":"assets/img/character/interact.webp","w":384,"h":480,"anchor":[0.5,0.9375],"displayHeight":160},"bulb_soft":{"src":"assets/img/effects/bulb_soft.webp","w":128,"h":140,"anchor":[0.5,1.0],"displayHeight":32},"bulb_bright":{"src":"assets/img/effects/bulb_bright.webp","w":132,"h":140,"anchor":[0.5,1.0],"displayHeight":32},"sparkle":{"src":"assets/img/effects/sparkle.webp","w":132,"h":140,"anchor":[0.5,1.0],"displayHeight":36},"landing_dust":{"src":"assets/img/effects/landing_dust.webp","w":198,"h":140,"anchor":[0.5,1.0],"displayHeight":36},"pickup_sparks":{"src":"assets/img/effects/pickup_sparks.webp","w":160,"h":140,"anchor":[0.5,1.0],"displayHeight":36},"pickup_ring":{"src":"assets/img/effects/pickup_ring.webp","w":144,"h":140,"anchor":[0.5,1.0],"displayHeight":36},"bg_far":{"src":"assets/img/environment/bg_far.webp","w":2172,"h":724},"bg_mid":{"src":"assets/img/environment/bg_mid.webp","w":2172,"h":461},"street_ground":{"src":"assets/img/environment/street_ground.webp","w":2100,"h":1306,"walkable":0.12196,"logicalH":324.7},"portrait":{"src":"assets/img/character/portrait.webp","w":277,"h":320},"kv_p1":{"src":"assets/img/billboards/p1_kv.webp","w":1080,"h":608},"kv_p2":{"src":"assets/img/billboards/p2_kv.webp","w":1080,"h":608},"kv_p3":{"src":"assets/img/billboards/p3_kv.webp","w":1080,"h":608},"kv_p4":{"src":"assets/img/billboards/p4_kv.webp","w":1080,"h":608},"kv_p5":{"src":"assets/img/billboards/p5_kv.webp","w":1080,"h":608},"kv_p6":{"src":"assets/img/billboards/p6_kv.webp","w":1080,"h":608}},"glow":[[0.6773,0.3167],[0.477,0.7722],[0.7201,0.8872],[0.2979,0.7375],[0.3858,0.8395],[0.8204,0.7419],[0.8425,0.8807],[0.3674,0.679],[0.1262,0.8785],[0.918,0.9219],[0.6869,0.961],[0.645,0.3731],[0.6192,0.7245],[0.4963,0.8959],[0.1225,0.6985],[0.6791,0.6247],[0.6446,0.5857],[0.5456,0.6768],[0.587,0.7375],[0.5663,0.8677],[0.6694,0.1128],[0.2486,0.8221],[0.1984,0.5445],[0.4148,0.9588],[0.1727,0.7527],[0.7528,0.7202],[0.7776,0.9349],[0.2762,0.5575],[0.2196,0.6703],[0.4231,0.6638],[0.296,0.961],[0.89,0.6616],[0.6745,0.7918],[0.0962,0.9349]],"gallery":{"p1":[{"src":"assets/img/projects/p1_zlin_jinak_01.webp","thumb":"assets/img/projects/thumbs/p1_zlin_jinak_01.webp","w":836,"h":471,"alt":"Zlín jinak - City-light na zastávce"},{"src":"assets/img/projects/p1_zlin_jinak_02.webp","thumb":"assets/img/projects/thumbs/p1_zlin_jinak_02.webp","w":836,"h":471,"alt":"Zlín jinak - Stopy na chodníku"},{"src":"assets/img/projects/p1_zlin_jinak_03.webp","thumb":"assets/img/projects/thumbs/p1_zlin_jinak_03.webp","w":836,"h":470,"alt":"Zlín jinak - Billboard na továrně"},{"src":"assets/img/projects/p1_zlin_jinak_04.webp","thumb":"assets/img/projects/thumbs/p1_zlin_jinak_04.webp","w":836,"h":470,"alt":"Zlín jinak - Instagram carousel"}],"p2":[{"src":"assets/img/projects/p2_zakulisi_fmk_01.webp","thumb":"assets/img/projects/thumbs/p2_zakulisi_fmk_01.webp","w":836,"h":471,"alt":"#ZákulisíFMK - Krátká videa na telefonech"},{"src":"assets/img/projects/p2_zakulisi_fmk_02.webp","thumb":"assets/img/projects/thumbs/p2_zakulisi_fmk_02.webp","w":836,"h":471,"alt":"#ZákulisíFMK - Natáčení v ateliéru"},{"src":"assets/img/projects/p2_zakulisi_fmk_03.webp","thumb":"assets/img/projects/thumbs/p2_zakulisi_fmk_03.webp","w":836,"h":470,"alt":"#ZákulisíFMK - Obsahový plán"},{"src":"assets/img/projects/p2_zakulisi_fmk_04.webp","thumb":"assets/img/projects/thumbs/p2_zakulisi_fmk_04.webp","w":836,"h":470,"alt":"#ZákulisíFMK - Proces práce"}],"p3":[{"src":"assets/img/projects/p3_krize_24h_01.webp","thumb":"assets/img/projects/thumbs/p3_krize_24h_01.webp","w":836,"h":471,"alt":"Krize za 24 hodin - Tisková zpráva"},{"src":"assets/img/projects/p3_krize_24h_02.webp","thumb":"assets/img/projects/thumbs/p3_krize_24h_02.webp","w":836,"h":471,"alt":"Krize za 24 hodin - Reakce značky"},{"src":"assets/img/projects/p3_krize_24h_03.webp","thumb":"assets/img/projects/thumbs/p3_krize_24h_03.webp","w":836,"h":470,"alt":"Krize za 24 hodin - Krizový plán"},{"src":"assets/img/projects/p3_krize_24h_04.webp","thumb":"assets/img/projects/thumbs/p3_krize_24h_04.webp","w":836,"h":470,"alt":"Krize za 24 hodin - Q&A a hlavní sdělení"}],"p4":[{"src":"assets/img/projects/p4_festival_01.webp","thumb":"assets/img/projects/thumbs/p4_festival_01.webp","w":836,"h":471,"alt":"Studentský festival - Festivalový plakát"},{"src":"assets/img/projects/p4_festival_02.webp","thumb":"assets/img/projects/thumbs/p4_festival_02.webp","w":836,"h":471,"alt":"Studentský festival - Dvojitá vstupenka"},{"src":"assets/img/projects/p4_festival_03.webp","thumb":"assets/img/projects/thumbs/p4_festival_03.webp","w":836,"h":470,"alt":"Studentský festival - Festivalový moment"},{"src":"assets/img/projects/p4_festival_04.webp","thumb":"assets/img/projects/thumbs/p4_festival_04.webp","w":836,"h":470,"alt":"Studentský festival - Instagram story"}],"p5":[{"src":"assets/img/projects/p5_od_lajku_k_darci_01.webp","thumb":"assets/img/projects/thumbs/p5_od_lajku_k_darci_01.webp","w":836,"h":471,"alt":"Od lajku k dárci - E-mail na notebooku"},{"src":"assets/img/projects/p5_od_lajku_k_darci_02.webp","thumb":"assets/img/projects/thumbs/p5_od_lajku_k_darci_02.webp","w":836,"h":471,"alt":"Od lajku k dárci - Pětidílná série"},{"src":"assets/img/projects/p5_od_lajku_k_darci_03.webp","thumb":"assets/img/projects/thumbs/p5_od_lajku_k_darci_03.webp","w":836,"h":470,"alt":"Od lajku k dárci - Osobní dopis"},{"src":"assets/img/projects/p5_od_lajku_k_darci_04.webp","thumb":"assets/img/projects/thumbs/p5_od_lajku_k_darci_04.webp","w":836,"h":470,"alt":"Od lajku k dárci - Bára a dobrovolnice"}],"p6":[{"src":"assets/img/projects/p6_kafe21_01.webp","thumb":"assets/img/projects/thumbs/p6_kafe21_01.webp","w":836,"h":470,"alt":"Rebrand lokální kavárny - Kelímky a taška"},{"src":"assets/img/projects/p6_kafe21_02.webp","thumb":"assets/img/projects/thumbs/p6_kafe21_02.webp","w":836,"h":470,"alt":"Rebrand lokální kavárny - Menu"},{"src":"assets/img/projects/p6_kafe21_03.webp","thumb":"assets/img/projects/thumbs/p6_kafe21_03.webp","w":836,"h":470,"alt":"Rebrand lokální kavárny - Výloha kavárny"},{"src":"assets/img/projects/p6_kafe21_04.webp","thumb":"assets/img/projects/thumbs/p6_kafe21_04.webp","w":836,"h":470,"alt":"Rebrand lokální kavárny - Storyboard spotu"}]}};
+const PHOTO = {"portrait":"assets/img/photo/tereza-portrait.webp","avatar":"assets/img/photo/tereza-avatar.webp"};   // Tereza's real photo (web copies of assets/fmk/portrait-original.png, see portfolio.json)
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const rand = (a, b) => a + Math.random() * (b - a);
+const shuffle = arr => { for (let i = arr.length - 1; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0; [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; };
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const stripTags = s => String(s).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+const SANS = getComputedStyle(document.documentElement).getPropertyValue('--sans').trim() || 'system-ui, sans-serif';
+const SERIF = 'Georgia, Cambria, "Times New Roman", serif';
+
+const reduceMQ = matchMedia('(prefers-reduced-motion: reduce)');
+let reduced = reduceMQ.matches;
+
+const app = $('#app'), canvas = $('#scene'), ctx = canvas.getContext('2d', { alpha: false });
+const dlg = $('#dlg'), dlgBody = $('#dlg-body'), dlgScroll = $('#dlg-scroll'), dlgBack = $('#dlg-back');
+const hintEl = $('#hint'), hintText = $('#hint-text'), toastEl = $('#toast'), introEl = $('#intro');
+const insEl = $('#ins-count'), prjEl = $('#prj-count'), scoreChip = $('#score-chip');
+const ambientBtn = $('#ambient-btn'), skipBtn = $('#skip-btn');
+const touchE = document.querySelector('.tkey[data-k="E"]');
+
+
+/* ---------- constants ---------- */
+const WORLD = LAYOUT.worldWidth;
+const PH = ANIM.physics;
+const SPEED = PH.speed, JUMP_V = PH.jumpVelocity, GRAV = PH.gravity;
+const COYOTE = PH.coyoteMs / 1000, JBUF = PH.jumpBufferMs / 1000, MAX_DT = PH.maxDt;
+const PLAYER_H = ANIM.coordinateSystem.displayHeight;          // 160 logical px frame
+const WALK = PACK.assets.street_ground.walkable;                // walking line inside the street strip
+const STRIP_H = PACK.assets.street_ground.logicalH;             // sidewalk + two real-size lanes, logical px
+const PHW = 16;                                                 // player half-width for hits (no hair/bag)
+const PROJECT_IDS = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6'];
+const ENTRY_IDS = ['brief', ...PROJECT_IDS, 'cv'];
+
+/* ---------- content meta ---------- */
+const META = {};
+for (const id of ENTRY_IDS) {
+  const h = CONTENT[id].h;
+  const sm = h.match(/<small>([\s\S]*?)<\/small>/), h2 = h.match(/<h2>([\s\S]*?)<\/h2>/);
+  META[id] = { eyebrow: sm ? stripTags(sm[1]) : '', title: h2 ? stripTags(h2[1]) : CONTENT[id].t };
+}
+META.brief.listTitle = T.about; META.cv.listTitle = T.cv;
+
+/* ---------- game state ---------- */
+const IMG = {};
+let ready = false, paused = false, needsDraw = true, ambientPaused = reduced;
+let W = 0, H = 0, D = 1, Z = 1, viewW = 0, Gs = 0, LY = null;
+let time = 0, amb = 0, camX = 0, shakeT = 0;
+let ins = 0, introGone = false, near = null, lastNear = undefined;
+let touchMode = matchMedia('(pointer: coarse)').matches;
+let lastInputKeyboard = false;
+const seen = new Set();
+const input = { L: false, R: false, jumpBuf: 0 };
+
+const P = { x: LAYOUT.playerStartX, y: 0, vx: 0, vy: 0, dir: 1, onGround: true, coyote: 0,
+  takeoff: 0, land: 0, interact: 0, inv: 0, knockT: 0, knockV: 0, runClock: 0,
+  blinkIn: rand(2.8, 5.2), blinkT: 0 };
+
+const stations = LAYOUT.stations.map(s => ({ ...s, num: PROJECT_IDS.indexOf(s.id) + 1 }));
+const bulbs = LAYOUT.bulbs.map(b => ({ x: b.x, y: -(50 + b.height), got: false, phase: b.x * 0.019 }));
+const obstacles = LAYOUT.obstacles.map(o => ({ ...o }));
+const decorations = LAYOUT.decorations.map(d => ({ ...d }));
+let cars = [], carTimer = 0.4, vehicleBag = [];
+const fx = [];
+const glows = PACK.glow.map((g, i) => ({ x: g[0], y: g[1], ph: i * 1.7, sp: 0.12 + (i % 5) * 0.06 }));
+// fireworks over Zlín once two thirds of the insights are collected
+const FW_GOAL = Math.ceil(bulbs.length * 2 / 3);
+let fwOn = false, fwTimer = 0, fwRush = 0, firstPickup = true;
+const rockets = [], embers = [], flashes = [];
+const FW_COLORS = [[255, 214, 140], [255, 240, 214], [232, 40, 64], [255, 150, 90], [150, 190, 255]];
+$('#ins-total').textContent = bulbs.length;
+
+/* ---------- loading ---------- */
+function loadImages() {
+  const list = Object.entries(PACK.assets);
+  const bar = $('#loader-bar');
+  let done = 0;
+  return Promise.all(list.map(([id, a]) => new Promise((resolve, reject) => {
+    const im = new Image();
+    im.decoding = 'async';
+    im.onload = () => { IMG[id] = im; done++; bar.style.width = (done / list.length * 100).toFixed(1) + '%'; resolve(); };
+    im.onerror = () => reject(new Error(a.src));
+    im.src = a.src;
+  })));
+}
+
+/* ---------- layout ---------- */
+const safeProbe = $('#safe-probe');
+function layout() {
+  W = app.clientWidth; H = app.clientHeight;
+  D = Math.min(window.devicePixelRatio || 1, touchMode ? 1.75 : 2);
+  canvas.width = Math.max(1, Math.round(W * D));
+  canvas.height = Math.max(1, Math.round(H * D));
+  const portrait = H > W * 1.1;
+  // zoomed out: Tereza ~12 % of the screen height, a real-size street below her
+  Z = portrait ? clamp(W / 520, 0.6, 1.1) : clamp(Math.min(H / 980, W / 640), 0.5, 1.2);
+  viewW = W / Z;
+  const stripH = STRIP_H * Z, below = stripH * (1 - WALK);
+  const safeB = parseFloat(getComputedStyle(safeProbe).paddingBottom) || 0;
+  if (touchMode && portrait) Gs = H - safeB - 16 - 60 - 10 - below * 0.93;
+  else if (touchMode) Gs = H - below * 0.9;
+  else Gs = H - below + 14 * Z;
+  Gs = Math.round(Gs);
+  if (ready) computeLayers(stripH);
+  camX = clamp(camX, 0, Math.max(0, WORLD - viewW));
+  needsDraw = true;
+}
+
+function computeLayers(stripH) {
+  const g = PACK.assets.street_ground, mid = PACK.assets.bg_mid, far = PACK.assets.bg_far;
+  const stripTop = Gs - WALK * stripH;
+  const tileW = stripH * g.w / g.h;
+  // factory district: bounded pan, never repeated (single tower)
+  const midH0 = 420 * Z;
+  let midW = Math.max(midH0 * mid.w / mid.h, W * 1.15);
+  const midH = midW * mid.h / mid.w;
+  const midBottom = stripTop + 8 * Z;
+  const midTop = midBottom - midH;
+  // hills: smaller pan than the factories, bottom tucked behind the dense part of the factory layer
+  const farH0 = 430 * Z;
+  const farW = Math.max(farH0 * far.w / far.h, W * 1.06);
+  const farH = farW * far.h / far.w;
+  const farBottom = midTop + midH * 0.74;
+  const farTop = farBottom - farH;
+  const nightEnd = Math.max(farTop + farH * 0.34, H * 0.3);
+  const night = ctx.createLinearGradient(0, 0, 0, nightEnd);
+  night.addColorStop(0, 'rgba(4,16,36,.9)'); night.addColorStop(0.55, 'rgba(4,16,36,.38)'); night.addColorStop(1, 'rgba(4,16,36,0)');
+  LY = { stripH, stripTop, tileW, midW, midH, midTop, farW, farH, farTop, night, nightEnd, midScale: midH / mid.h };
+}
+
+/* ---------- sprites prepared once ---------- */
+function makeGlowSprite(r, g, b) {
+  const c = document.createElement('canvas'); c.width = c.height = 64;
+  const x = c.getContext('2d'), gr = x.createRadialGradient(32, 32, 0, 32, 32, 32);
+  gr.addColorStop(0, `rgba(${r},${g},${b},1)`); gr.addColorStop(0.35, `rgba(${r},${g},${b},.45)`); gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
+  x.fillStyle = gr; x.fillRect(0, 0, 64, 64); return c;
+}
+const GLOW_WARM = makeGlowSprite(255, 212, 140), GLOW_RED = makeGlowSprite(255, 40, 50), GLOW_LAMP = makeGlowSprite(255, 186, 104), GLOW_DARK = makeGlowSprite(4, 14, 30);
+
+/* ---------- HUD + messages ---------- */
+function updateHud() {
+  insEl.textContent = ins; prjEl.textContent = seen.size;
+  scoreChip.setAttribute('aria-label', `Insighty ${ins} z ${bulbs.length}, projekty ${seen.size} z 6`);
+}
+let toastTimer = 0;
+function toast(msg, ms = 2300) {
+  toastEl.textContent = msg; toastEl.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), ms);
+}
+function dismissIntro() {
+  if (introGone) return;
+  introGone = true; app.classList.add('played'); introEl.classList.add('gone');
+  setTimeout(() => introEl.classList.add('removed'), reduced ? 0 : (T.introFadeMs || 400));
+}
+
+/* ---------- input ---------- */
+const KEYMAP = { ArrowLeft: 'L', KeyA: 'L', ArrowRight: 'R', KeyD: 'R', ArrowUp: 'J', Space: 'J', KeyW: 'J', KeyE: 'E', Enter: 'E', NumpadEnter: 'E' };
+function clearInputs() {
+  input.L = input.R = false; input.jumpBuf = 0;
+  document.querySelectorAll('.tkey.down').forEach(b => b.classList.remove('down'));
+}
+function press(k) {
+  if (!ready || dlg.open) return;
+  if (k === 'L' || k === 'R') { input[k] = true; dismissIntro(); }
+  else if (k === 'J') { input.jumpBuf = JBUF; dismissIntro(); }
+  else if (k === 'E') tryOpen();
+}
+addEventListener('keydown', e => {
+  if (dlg.open) return;
+  const k = KEYMAP[e.code] || (e.key === ' ' ? 'J' : null);
+  if (!k) return;
+  const ctl = e.target && e.target.closest && e.target.closest('button, a, input, select, textarea, [contenteditable="true"]');
+  if (ctl && (e.code === 'Space' || e.key === ' ' || e.code === 'Enter' || e.code === 'NumpadEnter')) return; // let the focused control act
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  e.preventDefault();
+  lastInputKeyboard = true;
+  if (e.repeat) { if (k === 'L' || k === 'R') input[k] = true; return; } // held jump never auto-repeats
+  press(k);
+});
+addEventListener('keyup', e => {
+  const k = KEYMAP[e.code];
+  if (k === 'L' || k === 'R') input[k] = false;
+});
+addEventListener('pointerdown', e => {
+  lastInputKeyboard = false;
+  if (e.pointerType === 'touch' && !touchMode) setTouchMode(true);
+}, { capture: true, passive: true });
+addEventListener('blur', () => { clearInputs(); });
+document.addEventListener('visibilitychange', () => { clearInputs(); lastFrame = 0; });
+
+function setTouchMode(on) { touchMode = on; app.classList.toggle('is-touch', on); layout(); }
+app.classList.toggle('is-touch', touchMode);
+
+document.querySelectorAll('.tkey').forEach(btn => {
+  const k = btn.dataset.k;
+  const release = () => { btn.classList.remove('down'); if (k === 'L' || k === 'R') input[k] = false; };
+  btn.addEventListener('pointerdown', e => {
+    e.preventDefault();
+    try { btn.setPointerCapture(e.pointerId); } catch (_) {}
+    btn.classList.add('down');
+    press(k);
+  });
+  btn.addEventListener('pointerup', release);
+  btn.addEventListener('pointercancel', release);
+  btn.addEventListener('lostpointercapture', release);
+  btn.addEventListener('contextmenu', e => e.preventDefault());
+});
+canvas.addEventListener('contextmenu', e => { if (touchMode) e.preventDefault(); });
+
+hintEl.addEventListener('click', () => tryOpen());
+skipBtn.addEventListener('click', () => openList(skipBtn));
+$('#err-skip').addEventListener('click', () => openList(skipBtn));
+ambientBtn.addEventListener('click', () => setAmbient(!ambientPaused));
+function setAmbient(p) {
+  ambientPaused = p;
+  const label = p ? T.resume : T.pause;
+  ambientBtn.setAttribute('aria-pressed', String(p));
+  ambientBtn.setAttribute('aria-label', label); ambientBtn.title = label;
+  ambientBtn.querySelector('.i-pause').hidden = p; ambientBtn.querySelector('.i-play').hidden = !p;
+  needsDraw = true;
+}
+setAmbient(ambientPaused);
+reduceMQ.addEventListener && reduceMQ.addEventListener('change', e => { reduced = e.matches; if (reduced) setAmbient(true); });
+
+/* ---------- traffic ---------- */
+// far lane (towards the sidewalk) and near lane; sizes come from real heights, see build (75.8 px per metre)
+const LANES = [{ y: 118, dir: -1, s: 0.9 }, { y: 252, dir: 1, s: 1 }];
+const CARS = new Set(['car_vintage_red', 'car_vintage_blue', 'car_vintage_cream', 'taxi_vintage', 'car_modern_silver', 'wagon_modern_green', 'taxi_modern']);
+const BIG = new Set(['bus_vintage_red', 'trolleybus_red', 'minibus_festival']);
+function maxCars() { return viewW > 900 ? 6 : 3; }
+function nextVehicle() { if (!vehicleBag.length) vehicleBag = shuffle([...LAYOUT.trafficPool]); return vehicleBag.pop(); }
+function spawnCar(atX) {
+  const id = nextVehicle(), a = PACK.assets[id];
+  const lane = CARS.has(id) ? (Math.random() < 0.6 ? 0 : 1) : 1;   // vans, buses and the trolleybus keep to the near lane
+  const L = LANES[lane], h = a.realH * L.s, w = h * a.w / a.h;
+  const x = atX != null ? atX : (L.dir > 0 ? camX - w / 2 - 40 : camX + viewW + w / 2 + 40);
+  for (const c of cars) if (c.lane === lane && Math.abs(c.x - x) < (c.w + w) / 2 + 90) { vehicleBag.unshift(id); return false; }
+  // real-size vehicles need real-feeling speed: cars ~60 km/h, vans a bit less, buses slowest
+  const v0 = BIG.has(id) ? rand(800, 920) : CARS.has(id) ? rand(1150, 1350) : rand(950, 1100);
+  cars.push({ id, a, lane, dir: L.dir, x, w, h, v0, v: v0, seed: Math.random() * 10 });
+  return true;
+}
+function seedTraffic() {
+  cars = [];
+  const n = Math.round(maxCars() * 0.6);
+  for (let i = 0, tries = 0; i < n && tries < 40; tries++) if (spawnCar(camX + rand(0.05, 0.95) * viewW)) i++;
+}
+function updateTraffic(dt) {
+  carTimer -= dt;
+  if (carTimer <= 0) {
+    if (cars.length < maxCars()) carTimer = spawnCar() ? rand(0.55, 1.5) : 0.25; else carTimer = 0.35;
+  }
+  for (const c of cars) {
+    let lead = null, gap = Infinity;
+    for (const o of cars) {
+      if (o === c || o.lane !== c.lane) continue;
+      const d = (o.x - c.x) * c.dir;
+      if (d > 0 && d < gap) { gap = d; lead = o; }
+    }
+    const space = lead ? gap - (lead.w + c.w) / 2 : Infinity;
+    if (lead && space < 80) c.v = Math.min(c.v, lead.v * (space < 30 ? 0.85 : 1));
+    else c.v += (c.v0 - c.v) * Math.min(1, dt * 1.5);
+    c.x += c.v * c.dir * dt;
+  }
+  cars = cars.filter(c => {
+    const left = camX - 1400, right = camX + viewW + 1400;
+    if (c.dir > 0 && c.x - c.w / 2 > camX + viewW + 300) return false;
+    if (c.dir < 0 && c.x + c.w / 2 < camX - 300) return false;
+    return c.x > left && c.x < right;
+  });
+}
+
+/* ---------- update ---------- */
+function update(dt) {
+  time += dt;
+  if (!ambientPaused) amb += dt;
+
+  // timers
+  input.jumpBuf = Math.max(0, input.jumpBuf - dt);
+  P.takeoff = Math.max(0, P.takeoff - dt); P.land = Math.max(0, P.land - dt);
+  P.interact = Math.max(0, P.interact - dt); P.inv = Math.max(0, P.inv - dt);
+  shakeT = Math.max(0, shakeT - dt);
+
+  // horizontal
+  const axis = (input.R ? 1 : 0) - (input.L ? 1 : 0);
+  if (P.knockT > 0) { P.knockT -= dt; P.vx = P.knockV; }
+  else { P.vx = axis * SPEED; if (axis) P.dir = axis; }
+  P.x = clamp(P.x + P.vx * dt, 30, WORLD - 30);
+
+  // jump with coyote time + buffer
+  P.coyote = P.onGround ? COYOTE : Math.max(0, P.coyote - dt);
+  if (input.jumpBuf > 0 && P.coyote > 0) {
+    P.vy = JUMP_V; P.onGround = false; P.coyote = 0; input.jumpBuf = 0; P.takeoff = (ANIM.states.takeoff.durationMs || 35) / 1000;
+  }
+  if (!P.onGround) {
+    P.vy += GRAV * dt; P.y += P.vy * dt;
+    if (P.y >= 0) {
+      const impact = P.vy;
+      P.y = 0; P.vy = 0; P.onGround = true;
+      P.land = (ANIM.states.land.durationMs || 90) / 1000;
+      if (impact > 260 && !reduced) fx.push({ type: 'dust', x: P.x, y: 0, t: 0, dur: ANIM.effects.landingDustMs / 1000 });
+    }
+  }
+
+  // idle blink
+  if (P.blinkT > 0) P.blinkT -= dt;
+  else if ((P.blinkIn -= dt) <= 0) { P.blinkT = ANIM.states.idle.blinkDurationMs / 1000; P.blinkIn = rand(2.8, 5.2); }
+
+  // run phase follows actual speed
+  if (Math.abs(P.vx) > 1 && P.onGround) P.runClock += dt * ANIM.states.run.fps * clamp(Math.abs(P.vx) / ANIM.states.run.speedReference, 0.65, 1.5);
+
+  // camera
+  const target = clamp(P.x - viewW * LAYOUT.cameraPlayerFraction, 0, Math.max(0, WORLD - viewW));
+  camX += (target - camX) * Math.min(1, dt * 6);
+
+  // insights
+  for (const b of bulbs) {
+    if (b.got) continue;
+    if (Math.abs(b.x - P.x) < 30 && b.y > P.y - 128 && b.y < P.y + 10) collect(b);
+  }
+
+  // obstacles: one insight, a soft bounce, one second of protection
+  if (P.inv <= 0) {
+    for (const o of obstacles) {
+      const a = PACK.assets[o.asset];
+      const dh = a.displayHeight, w = dh * a.w / a.h;
+      if (Math.abs(o.x - P.x) < w * 0.31 + PHW && P.y > -(a.collisionHeight || dh * 0.8)) { hit(o); break; }
+    }
+  }
+
+  // stations
+  let best = null, bd = LAYOUT.stationRange;
+  for (const s of stations) { const d = Math.abs(s.x - P.x); if (d < bd) { bd = d; best = s; } }
+  near = best;
+  if (near !== lastNear) { lastNear = near; renderHint(); }
+
+  if (!ambientPaused) { updateTraffic(dt); updateFireworks(dt); }
+
+  for (let i = fx.length - 1; i >= 0; i--) { fx[i].t += dt; if (fx[i].t >= fx[i].dur) fx.splice(i, 1); }
+}
+
+function collect(b) {
+  b.got = true; ins++; updateHud();
+  scoreChip.classList.remove('bump'); void scoreChip.offsetWidth; scoreChip.classList.add('bump');
+  fx.push({ type: 'pop', x: b.x, y: b.y, t: 0, dur: ANIM.effects.pickupMs / 1000 });
+  fx.push({ type: 'text', x: b.x, y: b.y - 20, t: 0, dur: 0.9, text: '+1 insight' });
+  if (!reduced) {
+    fx.push({ type: 'ring', x: b.x, y: b.y, t: 0, dur: 0.45 });
+    const n = 3 + ((Math.random() * 3) | 0);
+    for (let i = 0; i < n; i++) {
+      const ang = -Math.PI / 2 + (i - (n - 1) / 2) * 0.8 + rand(-0.2, 0.2);
+      fx.push({ type: 'spark', x: b.x, y: b.y, vx: Math.cos(ang) * rand(70, 120), vy: Math.sin(ang) * rand(70, 120), t: 0, dur: rand(0.35, 0.55), s: rand(0.45, 0.8) });
+    }
+  }
+  if (firstPickup) { firstPickup = false; toast(`První insight! Sesbírejte ${FW_GOAL} z ${bulbs.length} a nad Zlínem bude ohňostroj.`, 3600); }
+  if (!fwOn && ins >= FW_GOAL) startFireworks();
+  else if (ins === bulbs.length) setTimeout(() => toast(`Všech ${bulbs.length} insightů. Teď už jen do agentury na konci ulice.`, 3200), 350);
+}
+
+function startFireworks() {
+  fwOn = true; fwRush = 5; fwTimer = 0.2; needsDraw = true;
+  toast(reduced ? `${FW_GOAL} insightů! Ohňostroj je kvůli omezení pohybu jen jako statický obrázek.` : `${FW_GOAL} insightů! Nad Zlínem začal ohňostroj.`, 3600);
+  scoreChip.title = 'Ohňostroj odemčen';
+}
+function skyBand() {                       // where bursts may happen: the sky above the factory roofs
+  return { top: Math.max(H * 0.08, 70), bottom: LY.midTop + LY.midH * 0.18 };
+}
+function launchRocket() {
+  const band = skyBand();
+  const sx = rand(W * 0.08, W * 0.92);
+  rockets.push({ x: sx + camX * Z * 0.14, y: LY.midTop + LY.midH * 0.55, vy: -rand(420, 560) * Math.min(1.2, H / 800),
+    ty: rand(band.top, Math.max(band.top + 20, band.bottom)), c: FW_COLORS[(Math.random() * FW_COLORS.length) | 0], trail: [] });
+}
+function burst(r) {
+  const n = 54 + ((Math.random() * 28) | 0), sp = rand(120, 210) * Math.min(1.3, H / 800);
+  const two = Math.random() < 0.35 ? FW_COLORS[(Math.random() * FW_COLORS.length) | 0] : r.c;
+  for (let i = 0; i < n && embers.length < 900; i++) {
+    const a = (i / n) * Math.PI * 2 + rand(-0.05, 0.05), v = sp * rand(0.55, 1);
+    embers.push({ x: r.x, y: r.y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, t: 0, life: rand(1.1, 1.8), c: i % 2 ? r.c : two, px: r.x, py: r.y });
+  }
+  flashes.push({ x: r.x, y: r.y, t: 0, life: 0.5, c: r.c });
+}
+function updateFireworks(dt) {
+  if (!fwOn || reduced) return;
+  fwTimer -= dt; fwRush = Math.max(0, fwRush - dt);
+  if (fwTimer <= 0 && rockets.length < 6) { launchRocket(); fwTimer = fwRush > 0 ? rand(0.18, 0.45) : rand(1.0, 2.4); }
+  for (let i = rockets.length - 1; i >= 0; i--) {
+    const r = rockets[i];
+    r.trail.push([r.x, r.y]); if (r.trail.length > 7) r.trail.shift();
+    r.y += r.vy * dt; r.vy *= 1 - 0.6 * dt; r.x += Math.sin(r.y * 0.05) * 0.2;
+    if (r.y <= r.ty || r.vy > -60) { burst(r); rockets.splice(i, 1); }
+  }
+  for (let i = embers.length - 1; i >= 0; i--) {
+    const e = embers[i];
+    e.px = e.x; e.py = e.y; e.t += dt;
+    e.vx *= 1 - 1.1 * dt; e.vy = e.vy * (1 - 1.1 * dt) + 70 * dt;
+    e.x += e.vx * dt; e.y += e.vy * dt;
+    if (e.t >= e.life) embers.splice(i, 1);
+  }
+  for (let i = flashes.length - 1; i >= 0; i--) if ((flashes[i].t += dt) >= flashes[i].life) flashes.splice(i, 1);
+}
+const FW_STATIC = [[0.22, 0.35, 0], [0.55, 0.22, 2], [0.8, 0.4, 1]];   // reduced motion: three still bursts
+function drawFireworks() {
+  if (!fwOn) return;
+  const sh = -camX * Z * 0.14;               // the sky drifts with the far hills
+  ctx.globalCompositeOperation = 'lighter';
+  if (reduced) {
+    const band = skyBand();
+    for (const [fx, fy, ci] of FW_STATIC) {
+      const x = fx * W, y = band.top + fy * Math.max(40, band.bottom - band.top), c = FW_COLORS[ci];
+      glow(GLOW_WARM, x, y, 60, 60, 0.18);
+      ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},.7)`; ctx.lineWidth = 1.6; ctx.beginPath();
+      for (let i = 0; i < 28; i++) { const a = i / 28 * Math.PI * 2; ctx.moveTo(x + Math.cos(a) * 12, y + Math.sin(a) * 12); ctx.lineTo(x + Math.cos(a) * 46, y + Math.sin(a) * 46); }
+      ctx.stroke();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    return;
+  }
+  for (const f of flashes) glow(GLOW_WARM, f.x + sh, f.y, 120, 120, 0.22 * (1 - f.t / f.life));
+  ctx.lineCap = 'round';
+  for (const r of rockets) {
+    ctx.strokeStyle = 'rgba(255,226,170,.75)'; ctx.lineWidth = 2; ctx.beginPath();
+    r.trail.forEach(([x, y], i) => i ? ctx.lineTo(x + sh, y) : ctx.moveTo(x + sh, y)); ctx.lineTo(r.x + sh, r.y); ctx.stroke();
+  }
+  for (const e of embers) {
+    const k = 1 - e.t / e.life, a = k * k;
+    const flick = e.t > e.life * 0.6 && Math.random() < 0.25 ? 0.4 : 1;   // a little crackle as they burn out
+    ctx.strokeStyle = `rgba(${e.c[0]},${e.c[1]},${e.c[2]},${(a * flick).toFixed(3)})`; ctx.lineWidth = 2.6;
+    ctx.beginPath(); ctx.moveTo(e.px + sh, e.py); ctx.lineTo(e.x + sh, e.y + 0.01); ctx.stroke();
+    glow(GLOW_WARM, e.x + sh, e.y, 6, 6, 0.45 * a * flick);
+  }
+  ctx.globalCompositeOperation = 'source-over';
+}
+
+function hit(o) {
+  P.inv = (PACK.assets[o.asset].cooldownMs || 1000) / 1000 || 1;
+  const away = Math.sign(P.x - o.x) || -P.dir;
+  P.knockV = away * 300; P.knockT = 0.16;
+  if (P.onGround) { P.vy = -230; P.onGround = false; P.coyote = 0; }
+  const had = ins > 0;
+  if (had) { ins--; updateHud(); }
+  toast(had ? o.message : o.message.replace(/\s*[−-]\s*1 insight\s*$/, ''));
+  if (!reduced) shakeT = 0.16;
+}
+
+/* ---------- drawing ---------- */
+function rr(x, y, w, h, r) {
+  ctx.beginPath();
+  if (ctx.roundRect) { ctx.roundRect(x, y, w, h, r); return; }
+  ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+}
+function sprite(id, x, y, h, dir = 1, alpha = 1) {
+  const a = PACK.assets[id], im = IMG[id]; if (!im) return 0;
+  const w = h * a.w / a.h, an = a.anchor || [0.5, 1];
+  if (alpha !== 1) ctx.globalAlpha = alpha;
+  if (dir < 0) { ctx.save(); ctx.translate(x, y); ctx.scale(-1, 1); ctx.drawImage(im, -w * an[0], -h * an[1], w, h); ctx.restore(); }
+  else ctx.drawImage(im, x - w * an[0], y - h * an[1], w, h);
+  if (alpha !== 1) ctx.globalAlpha = 1;
+  return w;
+}
+function glow(img, x, y, rx, ry, alpha) {
+  ctx.globalAlpha = alpha; ctx.drawImage(img, x - rx, y - ry, rx * 2, ry * 2); ctx.globalAlpha = 1;
+}
+function shadow(x, y, rx, ry, a) {
+  ctx.fillStyle = `rgba(2,8,18,${a})`; ctx.beginPath(); ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2); ctx.fill();
+}
+
+function drawBackdrop() {
+  const prog = clamp(camX / Math.max(1, WORLD - viewW), 0, 1);
+  ctx.setTransform(D, 0, 0, D, 0, 0);
+  if (LY.farTop > 0) { ctx.fillStyle = '#002554'; ctx.fillRect(0, 0, W, LY.farTop + 2); }
+  // far hills (bounded pan), then the evening sky darkens towards the top
+  ctx.drawImage(IMG.bg_far, -prog * (LY.farW - W), LY.farTop, LY.farW, LY.farH);
+  ctx.fillStyle = LY.night; ctx.fillRect(0, 0, W, LY.nightEnd);
+  drawFireworks();                           // behind the factory roofs, above the hills
+  // factory district (bounded pan)
+  const mx = -prog * (LY.midW - W);
+  ctx.drawImage(IMG.bg_mid, mx, LY.midTop, LY.midW, LY.midH);
+  // very gentle procedural window light, never a whole-building flicker
+  ctx.globalCompositeOperation = 'lighter';
+  const r = 12 * LY.midScale * 2.2;
+  for (const g of glows) {
+    const gx = mx + g.x * LY.midW, gy = LY.midTop + g.y * LY.midH;
+    if (gx < -r || gx > W + r) continue;
+    const a = reduced ? 0.1 : 0.05 + 0.13 * (0.5 + 0.5 * Math.sin(amb * g.sp + g.ph));
+    glow(GLOW_WARM, gx, gy, r, r, a);
+  }
+  ctx.globalCompositeOperation = 'source-over';
+  // street strip (repeats along x, crossfaded tile)
+  const tw = LY.tileW, off = ((camX * Z) % tw + tw) % tw;
+  const top = Math.floor(LY.stripTop * D) / D, sh = Math.ceil(LY.stripH * D) / D;
+  for (let x = -off; x < W; x += tw) {
+    const dx = Math.floor(x * D) / D;
+    ctx.drawImage(IMG.street_ground, dx, top, Math.ceil(tw * D + 1) / D, sh);
+  }
+  const bottom = top + sh - 1 / D;
+  if (bottom < H) { ctx.fillStyle = '#02070f'; ctx.fillRect(0, bottom, W, H - bottom); }
+}
+
+function drawTag(x, y, num, title, isSeen, active) {
+  const k = clamp(15 / Z, 14, 26) / 14;           // ~15 px on screen whatever the zoom
+  ctx.save(); ctx.translate(x, y); ctx.scale(k, k); x = 0; y = 0;
+  ctx.font = `700 14px ${SANS}`;
+  const nTxt = num ? String(num).padStart(2, '0') : '';
+  const nW = nTxt ? ctx.measureText(nTxt).width + 9 : 0;
+  const tW = ctx.measureText(title).width;
+  const cW = isSeen ? 22 : 0;
+  const w = 24 + nW + tW + cW, h = 28, x0 = x - w / 2, y0 = y - h;
+  ctx.shadowColor = 'rgba(0,0,0,.35)'; ctx.shadowBlur = 10; ctx.shadowOffsetY = 3;
+  ctx.fillStyle = active ? '#fff8ec' : 'rgba(244,235,221,.95)';
+  rr(x0, y0, w, h, 8); ctx.fill();
+  ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
+  if (active) { ctx.strokeStyle = '#c8102e'; ctx.lineWidth = 2; rr(x0, y0, w, h, 8); ctx.stroke(); }
+  ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+  let cx = x0 + 12;
+  if (nTxt) { ctx.fillStyle = '#c8102e'; ctx.fillText(nTxt, cx, y0 + h / 2 + 0.5); cx += nW; }
+  ctx.fillStyle = '#17202a'; ctx.fillText(title, cx, y0 + h / 2 + 0.5); cx += tW;
+  if (isSeen) {
+    const ccx = cx + 13, ccy = y0 + h / 2;
+    ctx.fillStyle = '#c8102e'; ctx.beginPath(); ctx.arc(ccx, ccy, 8, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#f4ebdd'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.beginPath(); ctx.moveTo(ccx - 3.6, ccy + 0.2); ctx.lineTo(ccx - 1, ccy + 2.8); ctx.lineTo(ccx + 3.8, ccy - 2.6); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function drawStation(s) {
+  const active = near === s;
+  const base = -12;
+  if (s.type === 'project') {
+    const id = active ? 'billboard_active' : 'billboard_empty';
+    const a = PACK.assets[id], h = a.displayHeight, w = h * a.w / a.h;
+    glow(GLOW_LAMP, s.x, base + 2, w * 0.62, 18, active ? 0.5 : 0.32);
+    if (active && !reduced) glow(GLOW_RED, s.x, base - h * 0.52, w * 0.72, h * 0.5, 0.10 + 0.05 * Math.sin(time * 3));
+    const x0 = s.x - w / 2, y0 = base - h;
+    ctx.drawImage(IMG[id], x0, y0, w, h);
+    const r = a.insertRect, kv = IMG['kv_' + s.id];
+    const dx = x0 + r[0] * w, dy = y0 + r[1] * h, dw = r[2] * w, dh = r[3] * h;
+    // cover-fit the key visual into the panel
+    const sr = dw / dh, ir = kv.width / kv.height;
+    let sx = 0, sy = 0, sw = kv.width, sh = kv.height;
+    if (ir < sr) { sh = kv.width / sr; sy = (kv.height - sh) / 2; } else { sw = kv.height * sr; sx = (kv.width - sw) / 2; }
+    ctx.drawImage(kv, sx, sy, sw, sh, dx, dy, dw, dh);
+    const shade = ctx.createLinearGradient(0, dy, 0, dy + dh);
+    shade.addColorStop(0, active ? 'rgba(255,214,140,.16)' : 'rgba(255,214,140,.08)'); shade.addColorStop(1, active ? 'rgba(8,28,48,0)' : 'rgba(8,28,48,.14)');
+    ctx.fillStyle = shade; ctx.fillRect(dx, dy, dw, dh);
+    drawTag(s.x, y0 - 6, s.num, s.title, seen.has(s.id), active);
+  } else if (s.type === 'about') {
+    const a = PACK.assets.brief_kiosk, h = a.displayHeight, w = h * a.w / a.h, x0 = s.x - w / 2, y0 = base - h;
+    glow(GLOW_LAMP, s.x, base + 2, 70, 14, 0.3);
+    ctx.drawImage(IMG.brief_kiosk, x0, y0, w, h);
+    const pr = a.portraitRect, pim = IMG.portrait;
+    const dx = x0 + pr[0] * w, dy = y0 + pr[1] * h, dw = pr[2] * w, dh = pr[3] * h;
+    // poster panel: deep-blue ground, portrait cover-cropped to the face, soft lamp-light on top
+    const sw = Math.min(pim.width, pim.height * dw / dh), sh = sw * dh / dw;
+    ctx.save(); rr(dx, dy, dw, dh, 2); ctx.clip();
+    const bg = ctx.createLinearGradient(0, dy, 0, dy + dh);
+    bg.addColorStop(0, '#1d3a63'); bg.addColorStop(1, '#0e2140');
+    ctx.fillStyle = bg; ctx.fillRect(dx, dy, dw, dh);
+    ctx.drawImage(pim, (pim.width - sw) / 2, 0, sw, sh, dx, dy, dw, dh);
+    const lit = ctx.createLinearGradient(0, dy, 0, dy + dh);
+    lit.addColorStop(0, 'rgba(255,214,150,.14)'); lit.addColorStop(1, 'rgba(8,28,48,.12)');
+    ctx.fillStyle = lit; ctx.fillRect(dx, dy, dw, dh);
+    ctx.restore();
+    const lr = a.labelRect;
+    ctx.fillStyle = '#17202a'; ctx.font = `800 ${(lr[3] * h * 0.6).toFixed(1)}px ${SANS}`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('O MNĚ', x0 + (lr[0] + lr[2] / 2) * w, y0 + (lr[1] + lr[3] / 2) * h + 0.5, lr[2] * w * 0.86);
+    drawTag(s.x, y0 - 8, 0, T.about, false, active);
+  } else {
+    const a = PACK.assets.agency_building, h = a.displayHeight, w = h * a.w / a.h, x0 = s.x - w / 2, y0 = base + 4 - h;
+    glow(GLOW_LAMP, s.x - w * 0.06, base + 4, w * 0.5, 22, active ? 0.55 : 0.38);
+    ctx.drawImage(IMG.agency_building, x0, y0, w, h);
+    const lr = a.labelRect;
+    ctx.fillStyle = '#17202a'; ctx.font = `800 ${Math.round(lr[3] * h * 0.56)}px ${SANS}`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('AGENTURA', x0 + (lr[0] + lr[2] / 2) * w, y0 + (lr[1] + lr[3] / 2) * h + 0.5, lr[2] * w * 0.92);
+    drawTag(s.x, y0 - 6, 0, T.cv, false, active);
+  }
+}
+
+function playerFrame() {
+  const st = ANIM.states;
+  if (P.interact > 0) return st.interact.frames[0];
+  if (!P.onGround) {
+    if (P.takeoff > 0) return st.takeoff.frames[0];
+    if (P.vy < -85) return st.ascend.frames[0];
+    if (P.vy <= 85) return st.apex.frames[0];
+    return st.descend.frames[0];
+  }
+  if (P.land > 0) return st.land.frames[0];
+  if (Math.abs(P.vx) > 1) return st.run.frames[Math.floor(P.runClock) % st.run.frames.length];
+  return P.blinkT > 0 ? st.idle.blinkFrame : st.idle.frames[0];
+}
+
+function drawCar(c) {
+  const bob = reduced || ambientPaused ? 0 : Math.sin(amb * 11 + c.seed) * 0.45;
+  const y = LANES[c.lane].y, a = c.a, im = IMG[c.id];
+  const flip = c.dir !== (a.facing === 'left' ? -1 : 1);
+  const body = c.h * (c.id === 'trolleybus_red' ? 0.59 : 0.95);   // trolley poles are not body
+  shadow(c.x, y - 2, c.w * 0.47, 8, 0.45);
+  // headlight wash on the asphalt in the travel direction + rear lights
+  const reach = 70 + c.w * 0.3;
+  const fx0 = c.x + c.dir * c.w * 0.47, ly = y - body * 0.34;
+  const cone = ctx.createLinearGradient(fx0, 0, fx0 + c.dir * reach, 0);
+  cone.addColorStop(0, 'rgba(255,214,150,.13)'); cone.addColorStop(1, 'rgba(255,214,150,0)');
+  ctx.globalCompositeOperation = 'lighter';
+  ctx.fillStyle = cone; ctx.beginPath();
+  ctx.moveTo(fx0, ly - 3); ctx.lineTo(fx0 + c.dir * reach, ly - 5); ctx.lineTo(fx0 + c.dir * reach, y + 6); ctx.lineTo(fx0, ly + 6); ctx.closePath(); ctx.fill();
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.save(); ctx.translate(c.x, y + bob); if (flip) ctx.scale(-1, 1);
+  ctx.drawImage(im, -c.w / 2, -c.h, c.w, c.h); ctx.restore();
+  ctx.globalCompositeOperation = 'lighter';
+  glow(GLOW_RED, c.x - c.dir * c.w * 0.48, ly + bob, 14, 9, 0.55);
+  ctx.globalCompositeOperation = 'source-over';
+  // live, never-mirrored lettering
+  const d = a.decal;
+  if (d) {
+    let dx = (d.center[0] - 0.5) * c.w; if (flip) dx = -dx;
+    const dy = -c.h + d.center[1] * c.h;
+    ctx.font = `800 ${Math.max(8, c.w * 0.072).toFixed(1)}px ${SANS}`;
+    ctx.fillStyle = d.color || '#c8102e'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(d.text, c.x + dx, y + dy + bob, c.w * (d.maxWidth || 0.4));
+  }
+}
+
+function drawFx() {
+  for (const e of fx) {
+    const k = e.t / e.dur;
+    if (e.type === 'pop') sprite('bulb_bright', e.x, e.y + 21, 42 * (1 + k * 0.5), 1, 1 - k);
+    else if (e.type === 'ring') sprite('pickup_ring', e.x, e.y + 20 * (0.5 + k * 1.1), 40 * (0.5 + k * 1.1), 1, (1 - k) * 0.9);
+    else if (e.type === 'spark') sprite('sparkle', e.x + e.vx * e.t, e.y + e.vy * e.t + 18 * e.s, 36 * e.s, 1, 1 - k);
+    else if (e.type === 'dust') sprite('landing_dust', e.x, 2, 30 * (0.85 + k * 0.3), 1, 0.75 * (1 - k));
+    else if (e.type === 'text') {
+      ctx.globalAlpha = 1 - k * k; ctx.font = `800 ${clamp(15 / Z, 15, 26).toFixed(1)}px ${SANS}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(8,28,48,.75)';
+      const ty = e.y - (reduced ? 0 : k * 30);
+      ctx.strokeText(e.text, e.x, ty); ctx.fillStyle = '#ffd27a'; ctx.fillText(e.text, e.x, ty); ctx.globalAlpha = 1;
+    }
+  }
+}
+
+function draw() {
+  if (!LY) return;
+  ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+  drawBackdrop();
+  const sx = shakeT > 0 ? (Math.random() - 0.5) * 5 : 0, sy = shakeT > 0 ? (Math.random() - 0.5) * 3 : 0;
+  ctx.setTransform(D * Z, 0, 0, D * Z, (-camX * Z + sx) * D, (Gs + sy) * D);
+  const vl = camX - 360, vr = camX + viewW + 360, vis = x => x > vl && x < vr;
+
+  // light pools under lamps, then near-layer decorations (always behind the walking line)
+  for (const d of decorations) if (d.asset === 'street_lamp' && vis(d.x)) glow(GLOW_LAMP, d.x, -12, 130, 18, 0.45);
+  for (const d of decorations) {
+    if (!vis(d.x)) continue;
+    const a = PACK.assets[d.asset];
+    sprite(d.asset, d.x, -16, a.displayHeight);
+  }
+  for (const s of stations) if (vis(s.x)) drawStation(s);
+
+  // insights
+  for (const b of bulbs) {
+    if (b.got || !vis(b.x)) continue;
+    const bob = reduced || ambientPaused ? 0 : Math.sin(amb * 2 * Math.PI / (ANIM.effects.bulbPeriodMs / 1000) + b.phase) * ANIM.effects.bulbBobPx;
+    const pulse = reduced || ambientPaused ? 0.9 : 0.875 + 0.125 * Math.sin(amb * 2.1 + b.phase * 3);
+    const close = Math.abs(b.x - P.x) < 150;
+    // a soft dark halo separates the bulb from the lit windows behind it, then the warm glow
+    glow(GLOW_DARK, b.x, b.y + bob, 30, 30, 0.75);
+    ctx.globalCompositeOperation = 'lighter';
+    glow(GLOW_WARM, b.x, b.y + bob, 38, 38, 0.5 * pulse);
+    ctx.globalCompositeOperation = 'source-over';
+    sprite(close ? 'bulb_bright' : 'bulb_soft', b.x, b.y + bob + 21, 42, 1, Math.min(1, pulse + 0.1));
+  }
+
+  // obstacles
+  for (const o of obstacles) {
+    if (!vis(o.x)) continue;
+    const a = PACK.assets[o.asset];
+    shadow(o.x, -1, a.displayHeight * a.w / a.h * 0.42, 5, 0.38);
+    sprite(o.asset, o.x, 0, a.displayHeight);
+  }
+
+  // player
+  const air = clamp(-P.y / 200, 0, 0.6);
+  shadow(P.x, -1, 22 * (1 - air * 0.6), 5 * (1 - air * 0.5), 0.42 * (1 - air));
+  const frame = playerFrame();
+  const breathe = (!reduced && P.onGround && Math.abs(P.vx) < 1 && P.land <= 0) ? 1 + 0.012 * Math.sin(time * 2 * Math.PI / 3.2) : 1;
+  let alpha = 1;
+  if (P.inv > 0) alpha = reduced ? 0.6 : (Math.floor(time * 12) % 2 ? 0.45 : 0.95);
+  ctx.save(); ctx.translate(P.x, P.y); ctx.scale(P.dir < 0 ? -1 : 1, breathe);
+  ctx.globalAlpha = alpha;
+  const fa = PACK.assets[frame], fh = PLAYER_H, fw = fh * fa.w / fa.h, an = fa.anchor;
+  ctx.drawImage(IMG[frame], -fw * an[0], -fh * an[1], fw, fh);
+  ctx.restore(); ctx.globalAlpha = 1;
+
+  // traffic below the sidewalk (far lane first)
+  for (const lane of [0, 1]) for (const c of cars) if (c.lane === lane && c.x > vl - 200 && c.x < vr + 200) drawCar(c);
+
+  drawFx();
+}
+
+/* ---------- loop ---------- */
+let lastFrame = 0;
+function frame(now) {
+  requestAnimationFrame(frame);
+  if (!lastFrame) lastFrame = now;
+  const dt = Math.min(MAX_DT, Math.max(0, (now - lastFrame) / 1000));
+  lastFrame = now;
+  if (!ready) return;
+  paused = dlg.open;
+  if (!paused) update(dt);
+  if (!paused || needsDraw) { draw(); needsDraw = false; }
+}
+
+/* ---------- station prompt ---------- */
+function stationLabel(s) {
+  if (s.type === 'about') return { small: 'Kiosek', text: T.about };
+  if (s.type === 'cv') return { small: 'Agentura', text: T.cv };
+  return { small: T.openProject, text: META[s.id].title };
+}
+function renderHint() {
+  if (!near) { hintEl.hidden = true; touchE.classList.add('dim'); return; }
+  const l = stationLabel(near);
+  hintText.innerHTML = `<small>${esc(l.small)}</small>${esc(l.text)}`;
+  hintEl.setAttribute('aria-label', `${l.small}: ${l.text}`);
+  hintEl.hidden = false; touchE.classList.remove('dim');
+}
+function tryOpen() {
+  if (!near || dlg.open) return;
+  P.interact = (ANIM.states.interact.durationMs || 240) / 1000;
+  P.vx = 0; needsDraw = true; draw();
+  openEntry(near.id, { opener: null }); // focus returns to the game, so Space jumps again
+}
+
+/* ---------- dialog ---------- */
+const ICON_L = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M28 12 16 24l12 12"/></svg>';
+const ICON_R = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 12 12 12-12 12"/></svg>';
+const ICON_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 12.5 4 4 8-9"/></svg>';
+let dlgMode = null, returnFocus = null, lastEntry = null, gal = null;
+const capOf = alt => alt.split(' - ').slice(1).join(' - ') || alt;
+
+function galleryHtml(id) {
+  const items = PACK.gallery[id] || [];
+  if (!items.length) return '';
+  const first = items[0];
+  return `<figure class="gallery" style="margin:6px 0 4px">
+    <div class="g-stage">
+      <img class="g-main" src="${first.src}" alt="${esc(first.alt)}" width="${first.w}" height="${first.h}" decoding="async">
+      <button class="g-nav g-prev" type="button" aria-label="Předchozí snímek">${ICON_L}</button>
+      <button class="g-nav g-next" type="button" aria-label="Další snímek">${ICON_R}</button>
+    </div>
+    <figcaption class="g-meta"><span class="g-count" aria-live="polite">1 / ${items.length}</span><span class="g-cap">${esc(capOf(first.alt))}</span></figcaption>
+    <div class="g-thumbs">${items.map((it, i) => `<button class="g-thumb" type="button" data-i="${i}" aria-label="Snímek ${i + 1} z ${items.length}: ${esc(it.alt)}" aria-current="${i === 0}"><img src="${it.thumb}" alt="" loading="lazy" decoding="async"></button>`).join('')}</div>
+  </figure>`;
+}
+function bindGallery(id) {
+  const root = dlgBody.querySelector('.gallery');
+  if (!root) { gal = null; return; }
+  const items = PACK.gallery[id];
+  const main = root.querySelector('.g-main'), count = root.querySelector('.g-count'), cap = root.querySelector('.g-cap');
+  const thumbs = [...root.querySelectorAll('.g-thumb')];
+  items.forEach(it => { const im = new Image(); im.src = it.src; }); // warm the cache for instant slide changes
+  gal = {
+    i: 0,
+    go(n) {
+      this.i = (n + items.length) % items.length;
+      const it = items[this.i];
+      main.src = it.src; main.alt = it.alt;
+      count.textContent = `${this.i + 1} / ${items.length}`;
+      cap.textContent = capOf(it.alt);
+      thumbs.forEach((t, k) => t.setAttribute('aria-current', String(k === this.i)));
+    }
+  };
+  root.querySelector('.g-prev').addEventListener('click', () => gal.go(gal.i - 1));
+  root.querySelector('.g-next').addEventListener('click', () => gal.go(gal.i + 1));
+  thumbs.forEach(t => t.addEventListener('click', () => gal.go(+t.dataset.i)));
+}
+
+function entryHtml(id) {
+  if (id === 'cv') return cvHtml();
+  let h = CONTENT[id].h.replace('<h2>', '<h2 id="dlg-title">');
+  if (id === 'brief') {
+    h = h.replace(/<h2 id="dlg-title">([\s\S]*?)<\/h2>/, (_, t) =>
+      `<div class="about-head"><img src="${PHOTO.avatar}" alt="Tereza Malá" width="92" height="92"><div><h2 id="dlg-title">${t}</h2></div></div>`);
+    return h;
+  }
+  return h.replace('</h2>', '</h2>' + galleryHtml(id));
+}
+function cvHtml() {
+  const src = CONTENT.cv.h;
+  const table = (src.match(/<table>[\s\S]*?<\/table>/) || [''])[0];
+  const lead = (src.match(/<\/h2>\s*(<p>[\s\S]*?<\/p>)/) || ['', ''])[1];
+  const n = seen.size, total = bulbs.length;
+  let score;
+  if (!n && !ins) score = 'Hru jste přeskočili? Nevadí. Všechno najdete i v přehledu bez hry.';
+  else score = `<b>Vaše kampaň:</b> ${ins}/${total} insightů, ${n}/6 projektů. ` +
+    (ins >= Math.round(total * 0.8) && n === 6 ? 'Zlatý bubeník. Pozvete mě na pohovor?' : n === 6 ? 'Shortlist! Viděli jste všechny projekty.' : 'Některé billboardy jste minuli. Vraťte se, stojí to za to.');
+  const cvBtn = CONFIG.cvPdf
+    ? `<a class="red-btn" href="${esc(CONFIG.cvPdf)}" download>Stáhnout CV (PDF)</a>`
+    : `<button class="btn-off" type="button" disabled>${esc(T.cvPlaceholder)}</button>`;
+  const mailBtn = CONFIG.contactEmail
+    ? `<a class="red-btn" href="mailto:${esc(CONFIG.contactEmail)}">Napsat mi</a>`
+    : `<button class="btn-off" type="button" disabled>${esc(T.contactPlaceholder)}</button>`;
+  return `<div class="cv-head"><img src="${PHOTO.portrait}" alt="Tereza Malá" width="600" height="750">
+      <div><small class="eyebrow-ink">${esc(META.cv.eyebrow)}</small><h2 id="dlg-title">${esc(META.cv.title)}</h2>${lead}</div></div>${table}
+    <p class="score">${score}</p>
+    <div class="actions">${cvBtn}${mailBtn}</div>
+    <p class="note">Fiktivní studentské portfolio vytvořené jako ukázka. <a href="${esc(CONFIG.galleryUrl)}">Galerie studentských portfolií FMK</a></p>`;
+}
+function listHtml() {
+  const row = id => {
+    const isP = PROJECT_IDS.includes(id);
+    const num = isP ? String(PROJECT_IDS.indexOf(id) + 1).padStart(2, '0') : '';
+    const g = PACK.gallery[id];
+    const img = isP ? `<img src="${g[0].thumb}" alt="" loading="lazy" decoding="async">` : `<img class="round" src="${PHOTO.avatar}" alt="" loading="lazy">`;
+    const title = META[id].listTitle || META[id].title;
+    const ok = isP && seen.has(id);
+    return `<li><button class="entry" type="button" data-open="${id}"><span class="e-num">${num}</span>${img}<span class="e-text"><small>${esc(META[id].eyebrow)}</small><b>${esc(title)}</b></span><span class="seen ${ok ? '' : 'no'}">${ok ? ICON_OK + '<span class="sr-only">viděno</span>' : ''}</span></button></li>`;
+  };
+  return `<small>${esc(T.skip)}</small>
+    <div class="profile-head"><img src="${PHOTO.portrait}" alt="Tereza Malá" width="600" height="750">
+      <div><h2 id="dlg-title">Tereza Malá</h2><p>Marketingová komunikace · FMK UTB ve Zlíně</p></div></div>
+    <p>Celé portfolio na jednom místě. Nic není zamčené za skóre: vyberte O mně, některý ze šesti projektů nebo CV.</p>
+    <ul class="entry-list">${ENTRY_IDS.map(row).join('')}</ul>
+    <p class="note">Fiktivní studentské portfolio vytvořené jako ukázka. <a href="${esc(CONFIG.galleryUrl)}">Galerie studentských portfolií FMK</a></p>`;
+}
+
+function showDialog() {
+  clearInputs();
+  if (!dlg.open) {
+    dlg.showModal();
+    dlg.classList.remove('anim'); void dlg.offsetWidth; dlg.classList.add('anim');
+  }
+}
+function markSeen(id) {
+  if (PROJECT_IDS.includes(id) && !seen.has(id)) { seen.add(id); updateHud(); needsDraw = true; }
+}
+function openEntry(id, { opener = null, fromList = false } = {}) {
+  if (!dlg.open) returnFocus = opener;
+  markSeen(id);
+  dlgMode = fromList ? 'entry-from-list' : 'entry';
+  lastEntry = id;
+  dlgBody.innerHTML = entryHtml(id);
+  dlgBack.hidden = !fromList;
+  bindGallery(id);
+  showDialog();
+  dlgScroll.scrollTop = 0;
+  (lastInputKeyboard ? (fromList ? dlgBack : $('#dlg-close')) : dlgScroll).focus({ preventScroll: true });
+}
+function openList(opener) {
+  if (!dlg.open) returnFocus = opener || null;
+  dlgMode = 'list'; gal = null;
+  dlgBody.innerHTML = listHtml();
+  dlgBack.hidden = true;
+  dlgBody.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openEntry(b.dataset.open, { fromList: true })));
+  showDialog();
+  dlgScroll.scrollTop = 0;
+  const prev = lastEntry && dlgBody.querySelector(`[data-open="${lastEntry}"]`);
+  (lastInputKeyboard ? (prev || $('#dlg-close')) : dlgScroll).focus({ preventScroll: true });
+}
+dlgBack.addEventListener('click', () => openList());
+$('#dlg-close').addEventListener('click', () => dlg.close());
+dlg.addEventListener('click', e => {
+  if (e.target !== dlg) return;
+  const r = dlg.getBoundingClientRect();
+  if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+});
+dlg.addEventListener('keydown', e => {
+  if (!gal) return;
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+    if (e.target.closest && e.target.closest('input, textarea')) return;
+    e.preventDefault(); gal.go(gal.i + (e.key === 'ArrowRight' ? 1 : -1));
+  }
+});
+dlg.addEventListener('close', () => {
+  clearInputs(); lastFrame = 0; needsDraw = true; gal = null; lastEntry = null;
+  const back = returnFocus && lastInputKeyboard && document.contains(returnFocus) && !returnFocus.hidden ? returnFocus : app;
+  back.focus({ preventScroll: true });
+  returnFocus = null;
+});
+
+/* ---------- boot ---------- */
+let resizeRaf = 0;
+addEventListener('resize', () => { cancelAnimationFrame(resizeRaf); resizeRaf = requestAnimationFrame(layout); });
+addEventListener('orientationchange', () => setTimeout(layout, 120));
+layout();
+updateHud();
+requestAnimationFrame(frame);
+
+loadImages().then(() => {
+  ready = true;
+  layout();
+  camX = clamp(P.x - viewW * LAYOUT.cameraPlayerFraction, 0, Math.max(0, WORLD - viewW));
+  seedTraffic();
+  renderHint();
+  draw();
+  const loader = $('#loader');
+  loader.classList.add('done');
+  setTimeout(() => loader.hidden = true, 500);
+  app.focus({ preventScroll: true });
+  window.__portfolioReady = true;
+}).catch(err => {
+  console.error('Obrázek nelze načíst:', err.message);
+  $('#loader-text').textContent = 'Město se nepodařilo celé načíst.';
+  $('#loader-err').hidden = false;
+  window.__portfolioError = err.message;
+});
+
+// test hooks (harmless in production)
+window.__portfolio = { P, stations, bulbs, obstacles, FW_GOAL, get fw() { return { on: fwOn, rockets: rockets.length, embers: embers.length }; }, get cars() { return cars; }, get ins() { return ins; }, seen, get near() { return near && near.id; }, get camX() { return camX; } };
+})();
+</script>
+</body>
+</html>
