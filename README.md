@@ -12,10 +12,7 @@ Hratelné studentské portfolio: jednoduchá 2D skákačka ve večerním modelov
 | `assets/img/…` | Obrázky ve formátu WebP (postava, město, auta, projekty) |
 | `portfolio.json` | Profil pro Galerii studentských portfolií FMK (schéma `schemaVersion: 1`) |
 | `assets/fmk/portrait-original.png` | Původní fotografie Terezy (`photoOriginal`), beze změn |
-| `assets/fmk/portrait-stamp-v3.png` | Aktuální razítkový portrét pro galerii (`photoStamp`) |
-| `assets/fmk/portrait-stamp-v2.png`, `portrait-stamp.png` | Předchozí razítkové varianty, zachovány pro porovnání |
-| `assets/fmk/stamp-style-reference.png` | Dodaná stylová reference pro další portréty |
-| `assets/fmk/portrait-generation.md` | Použité zadání, zdroj portrétu a skutečné parametry exportu |
+| `assets/fmk/portrait-stamp-v3.png` | Razítkový portrét pro galerii (`photoStamp`) |
 | `assets/img/photo/…` | Zmenšené kopie fotografie pro web (Bez hry, O mně, CV) |
 | `og-image.jpg` | Náhled při sdílení odkazu (Facebook, LinkedIn, Messenger…) |
 | `.nojekyll` | Říká GitHub Pages, ať soubory jen vystaví a nic nepřekládá |
@@ -51,7 +48,7 @@ Profil pro galerii je připraven v `portfolio.json` vedle `index.html`. Na skute
 
 - Cesty k obrázkům jsou relativní vůči `portfolio.json` (bez úvodního lomítka), takže fungují i v podadresáři.
 - `bio` má 107 znaků (limit je 180).
-- **Razítkový portrét je vložen.** Aktuální verze je `assets/fmk/portrait-stamp-v3.png` (6. 11. 2026, PNG 1122 × 1402 px s průhledným pozadím). Předchozí verze `portrait-stamp-v2.png` odpovídala nově dodané referenci: plošnější barvy, výraznější kresba a méně drobného rastrování. Předchozí verze zůstala ve složce. `photoStamp` odkazuje na existující PNG se skutečným alfa kanálem. Obrazový nástroj vrátil **1122 × 1402 px**, přibližně 4:5, nikoli přesných 1200 × 1500 px. Přesný poměr 4:5 tedy export nesplňuje; rozměry jsou uvedeny bez předstírání přesného výstupu. V galerii lze zachovat plátno 4:5 pomocí `object-fit: contain` bez natahování portrétu. Pro striktně přesný PNG export je nutné jeho rozměry ještě upravit. Původní fotografie i její optimalizované webové kopie zůstaly zachovány.
+- **Razítkový portrét je vložen.** Jediná verze je `assets/fmk/portrait-stamp-v3.png` (6. 11. 2026, PNG 1122 × 1402 px s průhledným pozadím, přibližně 4:5). Starší varianty byly odstraněny; zůstávají jen v historii repozitáře. V galerii se zobrazuje v ploše 4:5 s `object-fit: contain`, bez natahování. Původní fotografie i její webové kopie zůstaly zachovány.
 - Číslo složky přiděluje galerie, v souboru není.
 - **Společný zdroj jména a oboru:** při spuštění přes HTTP nebo HTTPS stránka načítá `portfolio.json` a používá jeho `name` a `studyProgram` ve shodných profilových polích, přehledu Bez hry, O mně a CV. Změny se projeví po novém načtení stránky. Otevíraný dialog se aktualizuje i při pozdějším doběhnutí požadavku. Text se vkládá bezpečně jako text, nikoli jako cizí HTML.
 - **Náhradní údaje pro offline náhled:** při otevření přes `file://`, nedostupném JSONu nebo chybě zůstávají vložené původní údaje v HTML; hra se nezastaví. Při přejmenování profilu upravte i tyto náhradní údaje a statické meta popisky pro sdílení.
