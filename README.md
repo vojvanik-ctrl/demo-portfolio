@@ -12,6 +12,10 @@ Hratelné studentské portfolio: jednoduchá 2D skákačka ve večerním modelov
 | `assets/img/…` | Obrázky ve formátu WebP (postava, město, auta, projekty) |
 | `portfolio.json` | Profil pro Galerii studentských portfolií FMK (schéma `schemaVersion: 1`) |
 | `assets/fmk/portrait-original.png` | Původní fotografie Terezy (`photoOriginal`), beze změn |
+| `assets/fmk/portrait-stamp-v2.png` | Aktuální razítkový portrét podle schválené reference (`photoStamp`) |
+| `assets/fmk/portrait-stamp.png` | Předchozí razítková varianta, zachována pro porovnání |
+| `assets/fmk/stamp-style-reference.png` | Dodaná stylová reference pro další portréty |
+| `assets/fmk/portrait-generation.md` | Použité zadání, zdroj portrétu a skutečné parametry exportu |
 | `assets/img/photo/…` | Zmenšené kopie fotografie pro web (Bez hry, O mně, CV) |
 | `og-image.jpg` | Náhled při sdílení odkazu (Facebook, LinkedIn, Messenger…) |
 | `.nojekyll` | Říká GitHub Pages, ať soubory jen vystaví a nic nepřekládá |
@@ -30,7 +34,7 @@ Hratelné studentské portfolio: jednoduchá 2D skákačka ve večerním modelov
 
 ## Napojení na společnou galerii
 
-Galerie čte `portfolio.json` z kořene portfolia, tedy `https://studentifmk.work/tereza-mala/portfolio.json`. Soubor odpovídá Promptu 1 z „FMK prompty pro studenty“:
+Profil pro galerii je připraven v `portfolio.json` vedle `index.html`. Na skutečném hostingu bude dostupný v kořeni portfolia, včetně případného podadresáře. Nastavená adresa je `https://studentifmk.work/tereza-mala/portfolio.json`, její veřejnou dostupnost se ale nepodařilo ověřit. Tato úprava web nepublikuje ani nezapojuje automatický import společné galerie. Soubor odpovídá Promptu 1 z „FMK prompty pro studenty“:
 
 ```json
 {
@@ -41,15 +45,18 @@ Galerie čte `portfolio.json` z kořene portfolia, tedy `https://studentifmk.wor
   "countryCode": "CZ",
   "portfolioUrl": "https://studentifmk.work/tereza-mala/",
   "photoOriginal": "assets/fmk/portrait-original.png",
-  "photoStamp": null
+  "photoStamp": "assets/fmk/portrait-stamp-v2.png"
 }
 ```
 
 - Cesty k obrázkům jsou relativní vůči `portfolio.json` (bez úvodního lomítka), takže fungují i v podadresáři.
 - `bio` má 107 znaků (limit je 180).
-- **Razítkový portrét zatím chybí.** Vytvořte ho Promptem 2 z fotografie `assets/fmk/portrait-original.png`, uložte jako `assets/fmk/portrait-stamp.png` (PNG s průhledným pozadím, 4:5, ideálně 1200 × 1500 px) a teprve potom vyplňte `"photoStamp": "assets/fmk/portrait-stamp.png"`. Do té doby galerie ukáže dočasný stav.
+- **Razítkový portrét je vložen.** Aktuální verze `assets/fmk/portrait-stamp-v2.png` odpovídá nově dodané referenci: plošnější barvy, výraznější kresba a méně drobného rastrování. Předchozí verze zůstala ve složce. `photoStamp` odkazuje na existující PNG se skutečným alfa kanálem. Obrazový nástroj vrátil **1122 × 1402 px**, přibližně 4:5, nikoli přesných 1200 × 1500 px. Přesný poměr 4:5 tedy export nesplňuje; rozměry jsou uvedeny bez předstírání přesného výstupu. V galerii lze zachovat plátno 4:5 pomocí `object-fit: contain` bez natahování portrétu. Pro striktně přesný PNG export je nutné jeho rozměry ještě upravit. Původní fotografie i její optimalizované webové kopie zůstaly zachovány.
 - Číslo složky přiděluje galerie, v souboru není.
-- Jméno, obor a fotografie jsou na stránce zapsané přímo v `index.html`. Při změně profilu je upravte na obou místech; automatická synchronizace se `portfolio.json` zapojená není.
+- **Společný zdroj jména a oboru:** při spuštění přes HTTP nebo HTTPS stránka načítá `portfolio.json` a používá jeho `name` a `studyProgram` ve shodných profilových polích, přehledu Bez hry, O mně a CV. Změny se projeví po novém načtení stránky. Otevíraný dialog se aktualizuje i při pozdějším doběhnutí požadavku. Text se vkládá bezpečně jako text, nikoli jako cizí HTML.
+- **Náhradní údaje pro offline náhled:** při otevření přes `file://`, nedostupném JSONu nebo chybě zůstávají vložené původní údaje v HTML; hra se nezastaví. Při přejmenování profilu upravte i tyto náhradní údaje a statické meta popisky pro sdílení.
+- `bio`, `countryCode` a `portfolioUrl` jsou samostatná galerijní data. Krátké `bio` nenahrazuje delší text O mně. Vyprávění, umělecké podklady, statické SEO popisky a optimalizované webové kopie fotografie se automaticky nepřepisují. Razítkový portrét se na osobním webu automaticky nezobrazuje místo původní fotografie.
+- Hodnoty `countryCode: "CZ"` a `portfolioUrl` byly již v dodaném profilu. Byly zachovány, nikoli odhadnuty ze jména či fotografie. Před zveřejněním potvrďte skutečnou cílovou adresu. Po publikování musí `portfolio.json` vracet JSON, nikoli náhradní HTML stránku.
 
 ## Lokální náhled
 
@@ -67,3 +74,15 @@ a pak otevřít `http://localhost:8000`.
 - Mobil: dvě šipky vlevo, skok a otevření vpravo.
 - **Bez hry:** celý obsah (O mně, 6 projektů, CV) bez hraní. Nic není zamčené za skóre.
 - Tlačítko pauzy zastaví okolní pohyb (dopravu, světla). Při `prefers-reduced-motion` je okolní pohyb vypnutý rovnou.
+
+## Ověření úprav pro galerii
+
+Příprava proběhla lokálně 6. listopadu 2026. JSON byl ověřen spolu s limitem popisku a existencí obou obrázků. Stránka se nadále spouští jako statický web bez sestavení a bez nových služeb. Veřejné nasazení touto úpravou nevzniklo; aktuální veřejnou dostupnost nastavené adresy se nepodařilo ověřit.
+
+### Co bylo skutečně ověřeno
+
+- Platný JSON se správnými poli, 107 znaků v popisku a existující odkazy na původní i aktuální razítkový portrét.
+- Lokální HTTP server vrátil `portfolio.json` jako JSON a oba obrázky jako PNG při provozu v podadresáři.
+- JavaScript prošel kontrolou syntaxe. Testy přímo z vloženého profilového modulu ověřily aktualizaci jména a oboru, bezpečné escapování hodnot, zachování náhradních údajů při chybném JSONu a vynechání požadavku při `file://`.
+- Původní fotografie, webové kopie, herní podklady a projektové obrázky zůstaly shodné s dodaným archivem.
+- Interakce a vzhled v živém prohlížeči nebyly ověřeny: prostředí blokuje spuštění lokálního prohlížeče a vzdálený prohlížeč nemá přístup k lokálnímu serveru. Veřejná adresa ani nasazení nejsou touto úpravou potvrzeny.
